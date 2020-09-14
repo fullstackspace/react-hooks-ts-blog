@@ -573,6 +573,11 @@
     tslib "2.0.1"
     uuid "8.3.0"
 
+"@nestjs/mapped-types@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-0.1.0.tgz#248435b4af4305bf6d1214d228c84926be56125a"
+  integrity sha512-FfQsZK5K1OvvGqjPHCJtrNTLlKLg7bLuphtCRTFb5K2P98JTfslauMbT7bS8huOoK/86HMNmNoHR/EVLAd4FzA==
+
 "@nestjs/platform-express@^7.0.0":
   version "7.4.4"
   resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.4.4.tgz#03429ebd5ae4fe7e38556cd9af8ae38ee42e7d1f"
@@ -593,6 +598,15 @@
     "@angular-devkit/schematics" "9.1.12"
     fs-extra "9.0.1"
     pluralize "8.0.0"
+
+"@nestjs/swagger@^4.6.0":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-4.6.0.tgz#42db9e5199bb67be7d09f85c87fb7593915f426b"
+  integrity sha512-B7DBMm+MTBfttGvtdb9quEbP9lgi5w3OFs30v/if0ZHE0Fl1B+t1FP8rnmR0xk5wfp7Wd/9LVl9ll/hvIheJ4w==
+  dependencies:
+    "@nestjs/mapped-types" "0.1.0"
+    lodash "4.17.20"
+    path-to-regexp "3.2.0"
 
 "@nestjs/testing@^7.0.0":
   version "7.4.4"
@@ -633,10 +647,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@typegoose/typegoose@^7.3.4":
-  version "7.3.4"
-  resolved "https://registry.npm.taobao.org/@typegoose/typegoose/download/@typegoose/typegoose-7.3.4.tgz#1ced16d19f9c4938abaec4b0351c0bfb562d4121"
-  integrity sha1-HO0W0Z+cSTirrsSwNRwL+1YtQSE=
+"@typegoose/typegoose@^7.3.5":
+  version "7.3.5"
+  resolved "https://registry.yarnpkg.com/@typegoose/typegoose/-/typegoose-7.3.5.tgz#f78e75ef3a4be51f03918879e6a8cf0d1fcf79c0"
+  integrity sha512-6CjIwftpowm3AxPbKrl1yZPzitZ9KQH38mL1RSFRqpsXnYcBZSqNCkpC0g3/ntQ9/hGWM+19wUId19SDGcCiKg==
   dependencies:
     lodash "^4.17.19"
     loglevel "^1.6.8"
@@ -805,8 +819,8 @@
 
 "@types/mongoose@^5.7.36":
   version "5.7.36"
-  resolved "https://registry.npm.taobao.org/@types/mongoose/download/@types/mongoose-5.7.36.tgz#2dae28c63041c6afba8a83ea02969f463b3f1021"
-  integrity sha1-La4oxjBBxq+6ioPqApafRjs/ECE=
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.7.36.tgz#2dae28c63041c6afba8a83ea02969f463b3f1021"
+  integrity sha512-ggFXgvkHgCNlT35B9d/heDYfSqOSwTmQjkRoR32sObGV5Xjd0N0WWuYlLzqeCg94j4hYN/OZxZ1VNNLltX/IVQ==
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"
@@ -1505,10 +1519,10 @@ bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bl@^2.2.0:
+bl@^2.2.1:
   version "2.2.1"
-  resolved "https://registry.npm.taobao.org/bl/download/bl-2.2.1.tgz?cache=0&sync_timestamp=1598428595445&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fbl%2Fdownload%2Fbl-2.2.1.tgz#8c11a7b730655c5d56898cdc871224f40fd901d5"
-  integrity sha1-jBGntzBlXF1WiYzchxIk9A/ZAdU=
+  resolved "https://registry.yarnpkg.com/bl/-/bl-2.2.1.tgz#8c11a7b730655c5d56898cdc871224f40fd901d5"
+  integrity sha512-6Pesp1w0DEX1N550i/uGV/TqucVL4AM/pgThFSN/Qq9si1/DF9aIHs1BxD8V/QU0HoeHO6cQRTAuYnLPKq1e4g==
   dependencies:
     readable-stream "^2.3.5"
     safe-buffer "^5.1.1"
@@ -4498,7 +4512,7 @@ lodash.toarray@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.toarray/-/lodash.toarray-4.4.0.tgz#24c4bfcd6b2fba38bfd0594db1179d8e9b656561"
   integrity sha1-JMS/zWsvuji/0FlNsRedjptlZWE=
 
-lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19:
+lodash@4.17.20, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -4773,12 +4787,12 @@ mkdirp@^0.5.1, mkdirp@^0.5.3:
   dependencies:
     minimist "^1.2.5"
 
-mongodb@3.6.0:
-  version "3.6.0"
-  resolved "https://registry.npm.taobao.org/mongodb/download/mongodb-3.6.0.tgz?cache=0&sync_timestamp=1599050537816&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmongodb%2Fdownload%2Fmongodb-3.6.0.tgz#babd7172ec717e2ed3f85e079b3f1aa29dce4724"
-  integrity sha1-ur1xcuxxfi7T+F4Hmz8aop3ORyQ=
+mongodb@3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.6.2.tgz#1154a4ac107bf1375112d83a29c5cf97704e96b6"
+  integrity sha512-sSZOb04w3HcnrrXC82NEh/YGCmBuRgR+C1hZgmmv4L6dBz4BkRse6Y8/q/neXer9i95fKUBbFi4KgeceXmbsOA==
   dependencies:
-    bl "^2.2.0"
+    bl "^2.2.1"
     bson "^1.1.4"
     denque "^1.4.1"
     require_optional "^1.0.1"
@@ -4791,14 +4805,14 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.npm.taobao.org/mongoose-legacy-pluralize/download/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha1-O6n5H6UHtRhtOZ+0CFS/8Y+1Y+Q=
 
-mongoose@^5.10.2:
-  version "5.10.2"
-  resolved "https://registry.npm.taobao.org/mongoose/download/mongoose-5.10.2.tgz#3a6770affa8c05c4198515616fd555a5c9bc74d6"
-  integrity sha1-Omdwr/qMBcQZhRVhb9VVpcm8dNY=
+mongoose@^5.10.5:
+  version "5.10.5"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.10.5.tgz#47bef488d1fd39ab9c93ab05a9b6d0b08fd8c662"
+  integrity sha512-BOQZsZn9Y79f3rWZFLD1gvOLNN5gOiGvGr5raqQ5v/T4fdAmnjXGCVynpW4SRnQLtrcCeLXyaaXVRT75863Q0w==
   dependencies:
     bson "^1.1.4"
     kareem "2.3.1"
-    mongodb "3.6.0"
+    mongodb "3.6.2"
     mongoose-legacy-pluralize "1.0.2"
     mpath "0.7.0"
     mquery "3.2.2"
@@ -4907,10 +4921,15 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nestjs-typegoose@^7.1.34:
-  version "7.1.34"
-  resolved "https://registry.npm.taobao.org/nestjs-typegoose/download/nestjs-typegoose-7.1.34.tgz#5c77601ad073e678150153afe66de2b3c7471c7d"
-  integrity sha1-XHdgGtBz5ngVAVOv5m3is8dHHH0=
+nestjs-mongoose-crud@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/nestjs-mongoose-crud/-/nestjs-mongoose-crud-2.0.0.tgz#938dae3060567fba6a8570bf06e71983a0c9bc62"
+  integrity sha512-D0+igqbr7Yrrh5z4nm1UYxBAfoyU8A8tyC0iPBU+xgfDs5fSXXsKmtq9gtVscqgAN7iTZ9jHndnbsNOFlDWnsw==
+
+nestjs-typegoose@^7.1.37:
+  version "7.1.37"
+  resolved "https://registry.yarnpkg.com/nestjs-typegoose/-/nestjs-typegoose-7.1.37.tgz#daef1f92dc746d853c33b82dd96a41dfcff93e0b"
+  integrity sha512-FGlBVK1zdmdL57OWs5NKS1USZNg4YBFKCXv3DMfmntCoPUz665BTiFvor/jKZydIoBOPJk3ORAvi6aYpMBE8DQ==
   dependencies:
     is-class "^0.0.9"
     reflect-metadata "^0.1.13"
@@ -6551,6 +6570,18 @@ supports-hyperlinks@^2.0.0:
   dependencies:
     has-flag "^4.0.0"
     supports-color "^7.0.0"
+
+swagger-ui-dist@^3.18.1:
+  version "3.33.0"
+  resolved "https://registry.yarnpkg.com/swagger-ui-dist/-/swagger-ui-dist-3.33.0.tgz#a34b5b7b6ce22dee28f7cbe6a60e0ba7e47750b6"
+  integrity sha512-IIF2OFr2+nFNDvQtQ/ZxC+qVQhFguV7UztD6nzdfkN4P7nOuM0amEa/8er7MKSFArc4rKGH4WkihUQczbBfUag==
+
+swagger-ui-express@^4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/swagger-ui-express/-/swagger-ui-express-4.1.4.tgz#8b814ad998b850a1cf90e71808d6d0a8a8daf742"
+  integrity sha512-Ea96ecpC+Iq9GUqkeD/LFR32xSs8gYqmTW1gXCuKg81c26WV6ZC2FsBSPVExQP6WkyUuz5HEiR0sEv/HCC343g==
+  dependencies:
+    swagger-ui-dist "^3.18.1"
 
 symbol-observable@1.2.0:
   version "1.2.0"
