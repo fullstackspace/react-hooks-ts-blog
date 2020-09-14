@@ -1,0 +1,35 @@
+.layout {
+  & .ant-layout {
+    height: 100vh;
+    // 头部
+    & .ant-layout-header {
+      padding: 0 20px;
+      & span {
+        font-size: 20px;
+        cursor: pointer;
+        color: #fff;
+      }
+      & .right {
+        float: right;
+        & .ant-avatar {
+          margin-left: 30px;
+        }
+      }
+    }
+    // 侧边栏
+    & .ant-layout-sider {
+      .logo {
+        height: 60px;
+        padding: 15px 14px 15px 24px;
+
+        & span {
+          font-size: 30px;
+          color: #fff;
+        }
+        & .title {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
