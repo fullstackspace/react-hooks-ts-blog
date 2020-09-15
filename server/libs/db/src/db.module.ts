@@ -12,7 +12,7 @@ const models = TypegooseModule.forFeature([User, Department])
     TypegooseModule.forRootAsync({
       useFactory() {
         return {
-          uri: 'mongodb://blogadmin:123456@localhost/reactblog',
+          uri: process.env.DB,
           useNewUrlParser: true,
           useUnifiedTopology: true,
           useCreateIndex: true,
