@@ -11,12 +11,12 @@ export interface IRouter {
 const router: IRouter[] = [
   {
     title: '首页',
-    icon: 'UserOutlined',
+    icon: 'CrownOutlined',
     key: '/firstPages',
   },
   {
     title: 'Dashboard',
-    icon: 'UserOutlined',
+    icon: 'GitlabOutlined',
     key: '/dashboard',
     child: [
       {
@@ -25,19 +25,19 @@ const router: IRouter[] = [
         icon: ''
       },
       {
-        title: '监空页',
+        title: '监控',
         key: '/dashboard/monitory',
         icon: ''
       },
       {
         title: '工作台',
         key: '/dashboard/work',
-        icon: 'UserOutlined',
+        icon: '',
         // child: [
         //   {
         //     title: '分析页',
         //     key: '/dashboard/analysis',
-        //     icon: 'UserOutlined',
+        //     icon: '',
         //     child: [
         //       {
         //         title: '监空页',
@@ -52,16 +52,17 @@ const router: IRouter[] = [
   },
   {
     title: '表单页',
-    icon: 'UserOutlined',
+    icon: 'MenuOutlined',
     key: '/formList'
   },
   {
-    title: '列表页',
-    icon: 'UserOutlined',
+    title: '表格页',
+    icon: 'TableOutlined',
     key: '/tableList',
     child: [
       {
         title: '普通表格',
+        icon: '',
         key: '/tableList/generalTable'
       },
       {
@@ -72,17 +73,17 @@ const router: IRouter[] = [
   },
   {
     title: '详情页',
-    icon: 'UserOutlined',
+    icon: 'QrcodeOutlined',
     key: '/detailForm',
   },
   {
     title: '结果页',
-    icon: 'UserOutlined',
+    icon: 'DropboxOutlined',
     key: '/resultPages'
   },
   {
     title: '异常页',
-    icon: 'UserOutlined',
+    icon: 'StopOutlined',
     key: '/unusual'
   },
   {

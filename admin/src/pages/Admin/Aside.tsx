@@ -1,11 +1,8 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import {
-  VideoCameraOutlined,
-  UploadOutlined,
   AntDesignOutlined
 } from '@ant-design/icons';
-import * as Icon from '@ant-design/icons';
 import router, { IRouter } from '@/router';
 import createIcon from '../../components/createIcon';
 const { Sider } = Layout
@@ -15,12 +12,12 @@ console.log(router)
 
 // 无子菜单
 const parentMenu = (menu: IRouter) => {
-  return <Menu.Item key={menu.key} icon={createIcon((menu.icon) as any)}>{menu.title}</Menu.Item>
+  return <Menu.Item key={menu.key} icon={createIcon((menu.icon ? menu.icon : '') as any)}>{menu.title}</Menu.Item>
 }
 // 有子菜单
 const sonMemu = (menu: IRouter) => {
   return (
-    <SubMenu key={menu.key} icon={createIcon((menu.icon) as any)} title={menu.title}>
+    <SubMenu key={menu.key} title={menu.title} icon={createIcon((menu.icon ? menu.icon : '') as any)}>
       {
         menu.child?.map((childMenu: IRouter) => {
           return childMenu.child ? sonMemu(childMenu) : parentMenu(childMenu)
