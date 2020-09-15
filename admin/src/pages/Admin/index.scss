@@ -4,6 +4,10 @@
     // 头部
     & .ant-layout-header {
       padding: 0 20px;
+      margin-left: 200px;
+      &.close {
+        margin-left: 80px;
+      }
       & span {
         font-size: 20px;
         cursor: pointer;
@@ -18,9 +22,13 @@
     }
     // 侧边栏
     & .ant-layout-sider {
-      .logo {
+      & .logo {
+        position: fixed;
+        left: 0;
+        z-index: 99;
         height: 60px;
         padding: 15px 14px 15px 24px;
+        background-color: rgb(0, 21, 41);
 
         & span {
           font-size: 30px;
@@ -29,6 +37,17 @@
         & .title {
           font-size: 18px;
         }
+      }
+      & .aside-menu {
+        margin-top: 60px;
+      }
+    }
+    // 内容区域
+    & .ant-layout-content {
+      margin-left: 200px;
+      padding: 10px 25px;
+      &.close {
+        margin-left: 80px;
       }
     }
   }

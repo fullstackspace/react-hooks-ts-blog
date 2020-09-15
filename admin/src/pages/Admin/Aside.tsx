@@ -1,15 +1,35 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import {
-  UserOutlined,
   VideoCameraOutlined,
   UploadOutlined,
-  AppleOutlined
+  AntDesignOutlined
 } from '@ant-design/icons';
-import router from '@/router';
+import * as Icon from '@ant-design/icons';
+import router, { IRouter } from '@/router';
+import createIcon from '../../components/createIcon';
 const { Sider } = Layout
 const { SubMenu } = Menu
 console.log(router)
+
+
+// 无子菜单
+const parentMenu = (menu: IRouter) => {
+  return <Menu.Item key={menu.key} icon={createIcon((menu.icon) as any)}>{menu.title}</Menu.Item>
+}
+// 有子菜单
+const sonMemu = (menu: IRouter) => {
+  return (
+    <SubMenu key={menu.key} icon={createIcon((menu.icon) as any)} title={menu.title}>
+      {
+        menu.child?.map((childMenu: IRouter) => {
+          return childMenu.child ? sonMemu(childMenu) : parentMenu(childMenu)
+        })
+      }
+    </SubMenu>
+  )
+}
+
 interface IProps {
   collapsed: boolean,
   [propName: string]: any
@@ -17,30 +37,26 @@ interface IProps {
 const Aside = (props: IProps) => {
   const { collapsed } = props
   return (
-    <Sider collapsed={collapsed} style={{ width: '300px' }} >
+    <Sider collapsed={collapsed} style={{
+      overflow: 'auto',
+      height: '100vh',
+      position: 'fixed',
+      left: 0,
+    }}>
       <div className="logo">
-        <AppleOutlined />
-        {!collapsed && <span className='title'>Management</span>}
+        <AntDesignOutlined />
+        {!collapsed && <span className='title'>Antd Design Pro</span>}
       </div>
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-        <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
-          <Menu.Item key="1">option1</Menu.Item>
-          <Menu.Item key="2">option2</Menu.Item>
-          <Menu.Item key="3">option3</Menu.Item>
-          <SubMenu key="sub12" icon={<UserOutlined />} title="subnav 1">
-            <Menu.Item key="13">option1</Menu.Item>
-            <Menu.Item key="24">option2</Menu.Item>
-            <Menu.Item key="35">option3</Menu.Item>
-            <Menu.Item key="42">option4</Menu.Item>
-          </SubMenu>
-        </SubMenu>
-        <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-          nav 2
-        </Menu.Item>
-        <Menu.Item key="3" icon={<UploadOutlined />}>
-          nav 3
-        </Menu.Item>
-      </Menu>
+      <div className="aside-menu">
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          {
+            router.map((menu: IRouter) => {
+              console.log(menu.child)
+              return menu.child ? sonMemu(menu) : parentMenu(menu)
+            })
+          }
+        </Menu>
+      </div>
     </Sider>
   )
 }

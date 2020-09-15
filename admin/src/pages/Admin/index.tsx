@@ -25,7 +25,7 @@ const Admin: React.FC = (props: IProps) => {
       <Layout>
         <Aside collapsed={collapsed} />
         <Layout>
-          <Header>
+          <Header className={collapsed ? 'close' : 'open'}>
             {collapsed ? <MenuUnfoldOutlined onClick={() => setCollapsed(!collapsed)} /> : <MenuFoldOutlined onClick={() => setCollapsed(!collapsed)} />}
             <div className='right clearBoth'>
               <Badge offset={[10, 0]} overflowCount={5} size='small' count={10} >
@@ -34,7 +34,7 @@ const Admin: React.FC = (props: IProps) => {
               <Avatar size={40}> User </Avatar>
             </div>
           </Header>
-          <TabComtent />
+          <TabComtent collapsed={collapsed} />
           <Footer>Footer</Footer>
         </Layout>
       </Layout>
