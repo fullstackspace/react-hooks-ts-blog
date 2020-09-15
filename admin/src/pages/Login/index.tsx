@@ -4,6 +4,7 @@ import LoginForm from './LoginForm';
 // 注册
 import RegisterForm from './RegisterForm';
 import './index.scss'
+// import '@/assets/outer.scss'
 
 class Login extends Component {
   constructor(prop: any) {
