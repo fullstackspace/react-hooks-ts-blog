@@ -3,10 +3,14 @@
     height: 100vh;
     // 头部
     & .ant-layout-header {
-      padding: 0 20px;
-      margin-left: 200px;
+      position: fixed;
+      padding: 0 20px 0 220px;
+      width: 100%;
+      z-index: 1;
+      // left: 200px;
       &.close {
-        margin-left: 80px;
+        // margin-left: 80px;
+        padding-left: 100px;
       }
       & span {
         font-size: 20px;
@@ -22,6 +26,9 @@
     }
     // 侧边栏
     & .ant-layout-sider {
+      &::-webkit-scrollbar {
+        display: none;
+      }
       & .logo {
         position: fixed;
         left: 0;
@@ -45,7 +52,7 @@
     // 内容区域
     & .ant-layout-content {
       margin-left: 200px;
-      padding: 10px 25px;
+      padding: 84px 20px 20px 25px;
       &.close {
         margin-left: 80px;
       }

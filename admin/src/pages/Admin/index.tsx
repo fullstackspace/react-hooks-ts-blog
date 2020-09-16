@@ -12,7 +12,7 @@ import {
 
 import './index.scss';
 
-const { Header, Footer } = Layout;
+const { Header } = Layout;
 interface IProps {
   [propName: string]: any
 }
@@ -35,7 +35,6 @@ const Admin: React.FC = (props: IProps) => {
             </div>
           </Header>
           <TabComtent collapsed={collapsed} />
-          <Footer>Footer</Footer>
         </Layout>
       </Layout>
     </div>

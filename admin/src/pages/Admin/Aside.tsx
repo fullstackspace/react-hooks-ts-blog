@@ -5,6 +5,7 @@ import {
 } from '@ant-design/icons';
 import router, { IRouter } from '@/router';
 import createIcon from '../../components/createIcon';
+import { Link } from 'react-router-dom';
 const { Sider } = Layout
 const { SubMenu } = Menu
 console.log(router)
@@ -12,7 +13,12 @@ console.log(router)
 
 // 无子菜单
 const parentMenu = (menu: IRouter) => {
-  return <Menu.Item key={menu.key} icon={createIcon((menu.icon ? menu.icon : '') as any)}>{menu.title}</Menu.Item>
+  return (
+    <Menu.Item key={menu.path} icon={createIcon((menu.icon ? menu.icon : '') as any)}>
+      {console.log(menu.key, menu.path)}
+      <Link to={menu.key}>{menu.title}</Link>
+    </Menu.Item>
+  )
 }
 // 有子菜单
 const sonMemu = (menu: IRouter) => {
@@ -39,6 +45,7 @@ const Aside = (props: IProps) => {
       height: '100vh',
       position: 'fixed',
       left: 0,
+      zIndex: 99
     }}>
       <div className="logo">
         <AntDesignOutlined />
@@ -48,7 +55,6 @@ const Aside = (props: IProps) => {
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           {
             router.map((menu: IRouter) => {
-              console.log(menu.child)
               return menu.child ? sonMemu(menu) : parentMenu(menu)
             })
           }

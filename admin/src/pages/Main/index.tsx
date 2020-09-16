@@ -6,8 +6,8 @@ import Admin from '../Admin';
 const Main: React.FC = (props) => {
   return (
     <Router>
-      <Route path="/" exact component={Login} />
-      <Route path="/index" component={Admin} />
+      <Route path="/login" exact component={Login} />
+      <Route path="/" component={Admin} />
     </Router>
   )
 }

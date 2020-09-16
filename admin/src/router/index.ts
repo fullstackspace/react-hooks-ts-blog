@@ -1,5 +1,3 @@
-import { title } from "process"
-
 export interface IRouter {
   title: string,
   key: string,
@@ -12,26 +10,30 @@ const router: IRouter[] = [
   {
     title: '首页',
     icon: 'CrownOutlined',
+    path: '/firstPages',
     key: '/firstPages',
   },
   {
     title: 'Dashboard',
     icon: 'GitlabOutlined',
-    key: '/dashboard',
+    key: 'dashboard',
     child: [
       {
         title: '分析页',
-        key: '/dashboard/analysis',
+        key: 'analysis',
+        path: '/analysis',
         icon: ''
       },
       {
         title: '监控',
-        key: '/dashboard/monitory',
+        key: 'monitory',
+        path: '/monitory',
         icon: ''
       },
       {
         title: '工作台',
-        key: '/dashboard/work',
+        key: 'work',
+        path: '/work',
         icon: '',
         // child: [
         //   {
@@ -53,43 +55,51 @@ const router: IRouter[] = [
   {
     title: '表单页',
     icon: 'MenuOutlined',
-    key: '/formList'
+    key: 'formList',
+    path: '/formList'
   },
   {
     title: '表格页',
     icon: 'TableOutlined',
-    key: '/tableList',
+    key: 'tableList',
     child: [
       {
         title: '普通表格',
         icon: '',
-        key: '/tableList/generalTable'
+        key: 'generalTable',
+        path: '/generalTable'
       },
       {
         title: '可编辑表格',
-        key: '/tableList/editTable'
+        icon: '',
+        key: '/editTable',
+        path: '/editTable'
       }
     ]
   },
   {
     title: '详情页',
     icon: 'QrcodeOutlined',
-    key: '/detailForm',
+    key: 'detailForm',
+    path: '/detailForm',
   },
   {
     title: '结果页',
     icon: 'DropboxOutlined',
-    key: '/resultPages'
+    key: 'resultPages',
+    path: '/resultPages'
   },
   {
     title: '异常页',
     icon: 'StopOutlined',
-    key: '/unusual'
+    key: 'unusual',
+    path: '/unusual'
   },
   {
     title: '个人页',
     icon: 'UserOutlined',
-    key: '/personal'
+    key: 'personal',
+    path: '/personal'
   }
 ]
 
