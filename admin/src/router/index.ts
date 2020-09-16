@@ -16,63 +16,56 @@ const router: IRouter[] = [
   {
     title: 'Dashboard',
     icon: 'GitlabOutlined',
-    key: 'dashboard',
+    key: '/dashboard',
     child: [
       {
         title: '分析页',
-        key: 'analysis',
+        key: '/analysis',
         path: '/analysis',
         icon: ''
       },
       {
         title: '监控',
-        key: 'monitory',
+        key: '/monitory',
         path: '/monitory',
         icon: ''
       },
       {
         title: '工作台',
-        key: 'work',
-        path: '/work',
+        key: '/work',
         icon: '',
-        // child: [
-        //   {
-        //     title: '分析页',
-        //     key: '/dashboard/analysis',
-        //     icon: '',
-        //     child: [
-        //       {
-        //         title: '监空页',
-        //         key: '/dashboard/monitory',
-        //         icon: ''
-        //       }
-        //     ]
-        //   },
-        // ]
+        child: [
+          {
+            title: '日志',
+            key: '/workLog',
+            path: '/workLog',
+            icon: '',
+          },
+        ]
       }
     ]
   },
   {
     title: '表单页',
     icon: 'MenuOutlined',
-    key: 'formList',
+    key: '/formList',
     path: '/formList'
   },
   {
     title: '表格页',
     icon: 'TableOutlined',
-    key: 'tableList',
+    key: '/tableList',
     child: [
       {
         title: '普通表格',
         icon: '',
-        key: 'generalTable',
+        key: '/generalTable',
         path: '/generalTable'
       },
       {
         title: '可编辑表格',
         icon: '',
-        key: '/editTable',
+        key: '//editTable',
         path: '/editTable'
       }
     ]
@@ -80,25 +73,25 @@ const router: IRouter[] = [
   {
     title: '详情页',
     icon: 'QrcodeOutlined',
-    key: 'detailForm',
+    key: '/detailForm',
     path: '/detailForm',
   },
   {
     title: '结果页',
     icon: 'DropboxOutlined',
-    key: 'resultPages',
+    key: '/resultPages',
     path: '/resultPages'
   },
   {
     title: '异常页',
     icon: 'StopOutlined',
-    key: 'unusual',
+    key: '/unusual',
     path: '/unusual'
   },
   {
     title: '个人页',
     icon: 'UserOutlined',
-    key: 'personal',
+    key: '/personal',
     path: '/personal'
   }
 ]
