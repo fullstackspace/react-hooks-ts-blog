@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import { Layout, Menu } from 'antd';
 import { AntDesignOutlined } from '@ant-design/icons';
 import router, { IRouter } from '@/router';
@@ -39,7 +39,7 @@ interface IMenu {
   selectKeys: string[],
   menuOpen: string[],
 }
-const Aside = (props: IProps) => {
+const Aside: FC<IProps> = (props) => {
   const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/firstPages'], menuOpen: [''] })
   // const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/workLog'], menuOpen: ['/dashboard','/work'] })
   // const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/generalTable'], menuOpen: ['/tablelist'] })
@@ -110,7 +110,6 @@ const Aside = (props: IProps) => {
           mode="inline"
           onSelect={selectMenu}
           selectedKeys={menuKey.selectKeys}
-          inlineCollapsed={collapsed}
           openKeys={menuKey.menuOpen}
         >
           {

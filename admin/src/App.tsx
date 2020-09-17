@@ -5,6 +5,7 @@ import './App.css';
 function App() {
   return (
     <div>
+      {console.log(process.env.REACT_APP_NODE_ENV)}
       <Main />
     </div>
   );
