@@ -47,7 +47,14 @@ const Aside = (props: IProps) => {
   const local = useLocation()
   const route = routeComponent()
   console.log(route)
+
+  /**路由切换时,控制左侧菜单高亮或多级菜单展开收起 */
   useEffect(() => {
+    // 解决侧边栏收起时,多级菜单一直显示问题
+    if (collapsed) {
+      setMenuKey({ ...menuKey, menuOpen: [''] })
+      return
+    }
     const { pathname } = local
     const pathIndex = route.findIndex(({ path }) => pathname.toLowerCase() === path)
     // let parentPath = menuKey.menuOpen
@@ -58,17 +65,15 @@ const Aside = (props: IProps) => {
       parentPath = [...route[pathIndex].parentPath]
     }
     setMenuKey({ selectKeys: [pathname], menuOpen: parentPath })
-  }, [local])
+  }, [local, collapsed])
+
   /**选中菜单 */
   const selectMenu = (item: any) => {
     console.log(item)
     setMenuKey({ ...menuKey, selectKeys: [item.key] })
   }
-  const openMenu = (item: string[]) => {
-    console.log(item)
-    setMenuKey({ ...menuKey })
-  }
 
+  /**点击一级以上菜单标题 */
   const selectSubMenu = (key: string) => {
     const { menuOpen } = menuKey
     // 菜单已打开,再次点击菜单 -> 当前菜单点击一次及以上
@@ -105,6 +110,7 @@ const Aside = (props: IProps) => {
           mode="inline"
           onSelect={selectMenu}
           selectedKeys={menuKey.selectKeys}
+          inlineCollapsed={collapsed}
           openKeys={menuKey.menuOpen}
         >
           {
