@@ -3,7 +3,7 @@ import { Layout, Menu } from 'antd';
 import { AntDesignOutlined } from '@ant-design/icons';
 import router, { IRouter } from '@/router';
 import createIcon from '../../components/createIcon';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import { routeComponent } from '@/utils/commom';
 const { Sider } = Layout
 const { SubMenu } = Menu
@@ -41,13 +41,13 @@ interface IMenu {
 }
 const Aside: FC<IProps> = (props) => {
   const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/firstPages'], menuOpen: [''] })
+  const history = useHistory()
   // const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/workLog'], menuOpen: ['/dashboard','/work'] })
   // const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/generalTable'], menuOpen: ['/tablelist'] })
   const { collapsed } = props
   const local = useLocation()
   const route = routeComponent()
   console.log(route)
-
   /**路由切换时,控制左侧菜单高亮或多级菜单展开收起 */
   useEffect(() => {
     // 解决侧边栏收起时,多级菜单一直显示问题
@@ -55,7 +55,7 @@ const Aside: FC<IProps> = (props) => {
       setMenuKey({ ...menuKey, menuOpen: [''] })
       return
     }
-    const { pathname } = local
+    let { pathname } = local
     const pathIndex = route.findIndex(({ path }) => pathname.toLowerCase() === path)
     // let parentPath = menuKey.menuOpen
     let parentPath = ['']
@@ -63,6 +63,10 @@ const Aside: FC<IProps> = (props) => {
     if (pathIndex > -1) {
       console.log(route[pathIndex])
       parentPath = [...route[pathIndex].parentPath]
+    }
+    // 初始化时直接跳转到首页
+    if (pathname === '/') {
+      history.push('/firstPages')
     }
     setMenuKey({ selectKeys: [pathname], menuOpen: parentPath })
   }, [local, collapsed])
