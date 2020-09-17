@@ -1,30 +1,26 @@
 export const routeComponent = () => {
   const files = require.context('../pages/', true, /\.tsx$/)
   const components = []
-  // console.log(files.keys())
   files.keys().forEach((key) => {
     if (key.includes('./Admin/') || key.includes('./Main/') || key.includes('./Login/')) {
       return false
     }
-    // const resObj = {}
     const pathArr = key.split('/')
-    console.log(pathArr)
-    // console.log(pathArr)
     const index = pathArr.findIndex((item) => item.includes('index'))
-    // console
     if (pathArr[index].includes('index')) {
       const path = `/${pathArr[index - 1].toLowerCase()}`
+      // 获取到真正的组件
       const component = files(key).default
+      // 构建父级菜单路径
       let parentPath = []
+      // 表明有父级至少一个父级菜单
       if (pathArr.length > 3) {
         for (let i = 1; i < pathArr.length - 2; i++) {
-          parentPath = parentPath.concat(pathArr[i])
+          parentPath = parentPath.concat(`/${pathArr[i].toLowerCase()}`)
         }
-        parentPath = `/${parentPath.join('/')}`
       }
       components.push({ path, component, parentPath })
     }
   })
-  console.log(components)
   return components
 }

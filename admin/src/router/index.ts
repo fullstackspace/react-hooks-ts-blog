@@ -1,6 +1,6 @@
 export interface IRouter {
   title: string,
-  key: string,
+  key: string, // key值如果是菜单统一使用小写(使用驼峰需定义方法,将点击菜单的key转换成驼峰形式),如果是路由则大小写无限制,
   path?: string,
   icon?: string,
   child?: IRouter[]
@@ -54,7 +54,7 @@ const router: IRouter[] = [
   {
     title: '表格页',
     icon: 'TableOutlined',
-    key: '/tableList',
+    key: '/tablelist',
     child: [
       {
         title: '普通表格',
@@ -65,7 +65,7 @@ const router: IRouter[] = [
       {
         title: '可编辑表格',
         icon: '',
-        key: '//editTable',
+        key: '/editTable',
         path: '/editTable'
       }
     ]
