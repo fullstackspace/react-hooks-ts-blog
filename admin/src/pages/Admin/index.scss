@@ -57,5 +57,13 @@
         margin-left: 80px;
       }
     }
+    // 底部
+    & .ant-layout-footer {
+      position: fixed;
+      padding-left: 200px;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+    }
   }
 }

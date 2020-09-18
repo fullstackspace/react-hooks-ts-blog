@@ -1,0 +1,21 @@
+.chart-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 100px;
+  & .chart-img {
+    & .chart-title {
+      font-size: 16px;
+      &::before {
+        content: '';
+        width: 2px;
+        height: 14px;
+        margin-right: 10px;
+        display: inline-block;
+        background-color: rgb(14, 10, 228);
+      }
+    }
+    & .recharts-wrapper {
+      margin: 0 20%;
+    }
+  }
+}

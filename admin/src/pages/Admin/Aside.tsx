@@ -40,7 +40,7 @@ interface IMenu {
   menuOpen: string[],
 }
 const Aside: FC<IProps> = (props) => {
-  const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/firstPages'], menuOpen: [''] })
+  const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: [''], menuOpen: [''] })
   const history = useHistory()
   // const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/workLog'], menuOpen: ['/dashboard','/work'] })
   // const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/generalTable'], menuOpen: ['/tablelist'] })
@@ -69,7 +69,7 @@ const Aside: FC<IProps> = (props) => {
       history.push('/firstPages')
     }
     setMenuKey({ selectKeys: [pathname], menuOpen: parentPath })
-  }, [local, collapsed])
+  }, [local, collapsed, history])
 
   /**选中菜单 */
   const selectMenu = (item: any) => {
