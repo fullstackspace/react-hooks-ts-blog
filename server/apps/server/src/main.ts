@@ -8,6 +8,7 @@ async function bootstrap() {
     .setTitle('react blog  example')
     .setDescription('The react blog server API description')
     .setVersion('1.0')
+    .addBearerAuth() // 启用验证
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api-docs', app, document);

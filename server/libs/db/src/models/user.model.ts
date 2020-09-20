@@ -13,6 +13,7 @@ export class User {
 
   @ApiProperty({ description: '密码', example: 'password1' })
   @prop({
+    select: false,
     set(val) {
       return val ? hashSync(val) : val
     },
