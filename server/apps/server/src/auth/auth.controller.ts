@@ -1,4 +1,4 @@
-import { User } from '@libs/db/models/user.model';
+import { User, UserDocument } from '@libs/db/models/user.model';
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiProperty, ApiTags } from '@nestjs/swagger';
 import { ReturnModelType } from '@typegoose/typegoose';
@@ -7,6 +7,7 @@ import { AuthGuard } from '@nestjs/passport'
 import { RegisterDto } from './dto/register';
 import { LoginDto } from './dto/login';
 import { JwtService } from '@nestjs/jwt'
+import { CurrentUser } from './current-user.decorator';
 // 对RegisterDto内的字段今进行接口文档的描述 -> 不需要将model模型注入就可以生成描述字段
 
 @Controller('auth')
@@ -31,11 +32,11 @@ export class AuthController {
   // 接口添加中文注释
   @ApiOperation({ summary: '登录' })
   @UseGuards(AuthGuard('local'))
-  async login(@Body() dto: LoginDto, @Req() req) {
+  async login(@Body() dto: LoginDto, @CurrentUser() user: UserDocument) {
 
     return {
       // 通过用户的主键生成token
-      token: this.jwtService.sign(String(req.user._id))
+      token: this.jwtService.sign(String(user._id))
     }
   }
 
@@ -45,7 +46,7 @@ export class AuthController {
   @ApiOperation({ summary: '获取用户个人信息' })
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth() // 表示当前接口可以传递token
-  async user(@Req() req) {
-    return req.user
+  async user(@CurrentUser() user: UserDocument) {
+    return user
   }
 }
