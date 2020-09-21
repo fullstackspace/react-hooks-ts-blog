@@ -6,10 +6,23 @@ import ScatterAndLineOfBestFit from './lineOfBestFit';
 import MultipleYAxesScatterChart from './scatterChart';
 import CustomActiveShapePieChart from './CustomActiveShapePieChart';
 import SpecifiedDomainRadarChart from './specifiedDomainRadarChart';
+import { login } from '@/service/api';
 import './index.scss'
 
 class FirstPages extends Component {
-
+  constructor(props: any) {
+    super(props)
+  }
+  componentDidMount() {
+    console.log(process.env.REACT_APP_BASE_URL)
+    login({ username: 'string', password: 'string' })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
   render() {
     return (
       <div className="chart-container">

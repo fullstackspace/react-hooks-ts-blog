@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Main from './pages/Main';
+import { connect } from 'react-redux';
 import './App.css';
+import { setToken } from '@/store/actions';
 
-function App() {
+function App(props: any) {
   return (
     <div>
       {console.log(process.env.REACT_APP_NODE_ENV)}
@@ -11,4 +13,12 @@ function App() {
   );
 }
 
-export default App;
+// export default App;
+export default connect(
+  function mapStateToProps(state) {
+    return state
+  },
+  function mapDispatchToProps(dispatch) {
+    return { dispatch }
+  }
+)(App)

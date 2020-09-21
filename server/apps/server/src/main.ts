@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors() // 允许跨域
   const options = new DocumentBuilder()
     .setTitle('react blog  example')
     .setDescription('The react blog server API description')

@@ -22,6 +22,12 @@ export class AuthController {
   @ApiOperation({ summary: '用户注册' })
   async register(@Body() dto: RegisterDto) {
     const { username, password } = dto
+    const hasUser = await this.userModel.findOne({ username })
+    if (hasUser) {
+      return {
+        msg: '用户名已存在,请重新输入用户名'
+      }
+    }
     const user = await this.userModel.create({ username, password })
     // 查询
     // const user = await this.userModel.findOne()
@@ -33,10 +39,14 @@ export class AuthController {
   @ApiOperation({ summary: '登录' })
   @UseGuards(AuthGuard('local'))
   async login(@Body() dto: LoginDto, @CurrentUser() user: UserDocument) {
-
-    return {
-      // 通过用户的主键生成token
-      token: this.jwtService.sign(String(user._id))
+    if (user._id) {
+      return {
+        // 通过用户的主键生成token
+        msg: '登录成功',
+        token: this.jwtService.sign(String(user._id))
+      }
+    } else {
+      return user
     }
   }
 

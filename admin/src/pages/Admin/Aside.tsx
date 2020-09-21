@@ -47,7 +47,6 @@ const Aside: FC<IProps> = (props) => {
   const { collapsed } = props
   const local = useLocation()
   const route = routeComponent()
-  console.log(route)
   /**路由切换时,控制左侧菜单高亮或多级菜单展开收起 */
   useEffect(() => {
     // 解决侧边栏收起时,多级菜单一直显示问题

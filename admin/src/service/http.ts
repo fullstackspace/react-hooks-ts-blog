@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 实例创建
 const service = axios.create({
-  baseURL: '', // 请求地址
+  baseURL: process.env.REACT_APP_BASE_URL, // 请求地址
   timeout: 3000, // 请求超时时长
   headers: {
     token: ''
@@ -19,10 +19,11 @@ service.interceptors.request.use(config => {
 
 // 响应拦截
 service.interceptors.response.use(response => {
+  const { data } = response
   // 配置响应错误的全局拦截
   // 登录失效
   // 接口请求成功状态码
-  return response
+  return data
 }, error => {
   // 失败后的状态码区分
   return Promise.reject(error)

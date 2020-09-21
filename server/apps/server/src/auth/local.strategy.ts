@@ -7,7 +7,7 @@ import { ReturnModelType } from '@typegoose/typegoose'
 import { BadRequestException } from '@nestjs/common'
 import { compareSync } from 'bcryptjs'
 // 逻辑
-export class LocalStrategy extends PassportStrategy(Strategy,'local') {
+export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
   // 名字不一样是要书写
   constructor(@InjectModel(User) private userModel: ReturnModelType<typeof User>) {
     super({
@@ -22,10 +22,16 @@ export class LocalStrategy extends PassportStrategy(Strategy,'local') {
     // select明确需要查出密码
     const user = await this.userModel.findOne({ username }).select('+password')
     if (!user) {
-      throw new BadRequestException('用户名不正确')
+      // throw new BadRequestException('用户名不正确')
+      return {
+        msg: '用户名不正确'
+      }
     }
-    if (!compareSync(username, user.password)) {
-      throw new BadRequestException('密码不正确')
+    if (!compareSync(password, user.password)) {
+      // throw new BadRequestException('密码不正确')
+      return {
+        msg: '密码不正确'
+      }
     }
     return user
   }

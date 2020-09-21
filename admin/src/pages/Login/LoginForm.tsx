@@ -1,14 +1,19 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-
+import { useHistory } from 'react-router';
 interface IProps {
   [propName: string]: any
 }
 
-const LoginForm: React.FC = (props: IProps) => {
-  const onFinish = (values: IProps) => {
-    console.log('Success:', values);
+const LoginForm: React.FC<IProps> = (props) => {
+  const { doLogin } = props
+  const history = useHistory()
+  const onFinish = async (values: IProps) => {
+    const username = values.username.trim()
+    const password = values.password.trim()
+    doLogin({ username, password })
+    // console.log('Success:', values);
   };
 
   const onFinishFailed = (errorInfo: IProps) => {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, Badge, Avatar } from 'antd';
 // 侧边栏
 import Aside from './Aside';
@@ -11,6 +11,8 @@ import {
 } from '@ant-design/icons';
 
 import './index.scss';
+import { getToken } from '@/utils/stroages';
+import { useHistory } from 'react-router';
 
 const { Header, Footer } = Layout;
 interface IProps {
@@ -20,6 +22,12 @@ interface IProps {
 
 const Admin: React.FC = (props: IProps) => {
   const [collapsed, setCollapsed] = useState(false)
+  const history = useHistory()
+  useEffect(() => {
+    if(!getToken({ name: 'token' })){
+      history.push('/login')
+    } 
+  }, [])
   return (
     <div className='layout'>
       <Layout>
