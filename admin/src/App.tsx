@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Main from './pages/Main';
 import { connect } from 'react-redux';
 import './App.css';
-import { setToken } from '@/store/actions';
 
 function App(props: any) {
   return (

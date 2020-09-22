@@ -11,40 +11,42 @@ import createIcon from '@/components/createIcon';
 const { Header } = Layout;
 interface IProps {
   collapsed: boolean,
-  toggleCollapsed: any
+  toggleCollapsed: any,
+  topGoTo: any
 }
 
 const userInfo = [
   {
-    key: '/Personal',
+    path: '/personal',
     icon: 'UserOutlined',
     title: '个人中心'
   },
   {
-    key: '/System',
+    path: '/system',
     icon: 'ToolOutlined',
     title: '系统设置'
   },
   {
-    key: '/login',
+    path: '/login',
     icon: 'AimOutlined',
     title: '登出'
   },
 ]
 
 const TopHeader: FC<IProps> = (props) => {
-  const { collapsed, toggleCollapsed } = props
+  const { collapsed, toggleCollapsed, topGoTo } = props
   const handleMenuClick = (e: any) => {
     console.log(e)
+    topGoTo(e.key)
   }
   const menu = (
     <Menu onClick={handleMenuClick}>
       {
-        userInfo.map(item => {
-          // <Menu.Item key={item.key} icon={createIcon((item.icon ? item.icon : '') as any)}>
-          //   {item.title}
-          // </Menu.Item>
-        })
+        userInfo.map(menu => (
+          <Menu.Item key={menu.path} icon={createIcon((menu.icon ? menu.icon : '') as any)}>
+            {menu.title}
+          </Menu.Item>
+        ))
       }
     </Menu>
   );

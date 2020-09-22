@@ -1,4 +1,4 @@
-import React, { Component, FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 // 登录
 import LoginForm from './LoginForm';
 // 注册
@@ -32,10 +32,11 @@ const Login: FC<IProps> = (props) => {
   }
   const doLogin = async (value: ILogin) => {
     const { msg, token } = await login(value) as IUserInfo
-    message.warning(msg)
     if (!token) {
+      message.warning(msg)
       return
     }
+    message.success(msg)
     setToken({ name: 'token', value: JSON.stringify(token) })
     history.push('/')
   }
