@@ -48,8 +48,21 @@ const router: IRouter[] = [
   {
     title: '表单页',
     icon: 'MenuOutlined',
-    key: '/formList',
-    path: '/formList'
+    key: '/formlist',
+    child: [
+      {
+        title: '编辑',
+        icon: '',
+        key: '/editorForm',
+        path: '/editorForm'
+      },
+      {
+        title:'详情',
+        icon: '',
+        key: '/detailForm',
+        path: '/detailForm'
+      }
+    ]
   },
   {
     title: '表格页',
@@ -69,12 +82,6 @@ const router: IRouter[] = [
         path: '/editTable'
       }
     ]
-  },
-  {
-    title: '详情页',
-    icon: 'QrcodeOutlined',
-    key: '/detailForm',
-    path: '/detailForm',
   },
   {
     title: '结果页',
