@@ -1,0 +1,42 @@
+.commForm {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  & .ant-form-item {
+    margin-bottom: 24px;
+    & .ant-form-item-label {
+      width: 130px;
+      white-space: normal;
+      font-size: 14px;
+      line-height: 16px;
+    }
+    & .ant-form-item-control-input {
+      & div:first-child {
+        width: 100%;
+      }
+    }
+  }
+  &.ant-form-inline {
+    & .ant-form-item-with-help {
+      margin-bottom: 0px;
+    }
+  }
+
+  & .comm-detail {
+    display: flex;
+    box-sizing: border-box;
+    padding-right: 40px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    & .comm-detail-title {
+      width: 180px;
+      text-align: right;
+      margin-bottom: 0;
+    }
+    & .comm-detail-text {
+      flex: 1;
+      margin-left: 5px;
+      margin-bottom: 0;
+    }
+  }
+}

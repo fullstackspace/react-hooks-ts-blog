@@ -9,7 +9,7 @@ import TabComtent from './TabComtent';
 import './index.scss';
 import { getToken, removeToken } from '@/utils/stroages';
 import { useHistory } from 'react-router';
-import Dialog from '@/components/dialog';
+import Dialog from '@/components/Dialog';
 
 
 const { Footer } = Layout;

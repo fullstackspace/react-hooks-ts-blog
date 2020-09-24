@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Modal } from 'antd';
+import './index.scss'
 
 interface Iprops {
   title?: string,
