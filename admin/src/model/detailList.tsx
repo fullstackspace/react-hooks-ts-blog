@@ -6,7 +6,6 @@ export const formList: IInputItem[] = [
     name: 'username',
     type: 'input',
     value: '',
-    required: true,
     // attrs: { disabled: true }
   },
   {
@@ -14,7 +13,6 @@ export const formList: IInputItem[] = [
     name: 'bank',
     type: 'search',
     value: '中国银行',
-    required: true,
   },
   {
     label: '性别',
@@ -22,7 +20,6 @@ export const formList: IInputItem[] = [
     type: 'select',
     options: [],
     value: 'Jack',
-    required: true,
     // attrs: { disabled: true }
   },
   {
@@ -36,28 +33,24 @@ export const formList: IInputItem[] = [
     label: '还款日期范围',
     name: 'repayDate',
     type: 'rangeDate',
-    value: '',
-    attrs: { disabled: true }
+    value: moment(new Date()),
   },
   {
     label: '还款时间',
     name: 'repayTime',
     type: 'time',
-    value: '',
-    attrs: { disabled: true }
+    value: moment(new Date()),
   },
   {
     label: '还款时间范围',
     name: 'repayTimeRange',
     type: 'rangeTime',
-    value: '',
-    attrs: { disabled: true }
+    value: moment(new Date()),
   },
   {
     label: '描述',
     name: 'descriptions',
     type: 'textarea',
-    value: '',
-    attrs: { disabled: true }
+    value: '恶魔妈妈木木木木',
   },
 ]

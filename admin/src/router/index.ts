@@ -51,16 +51,22 @@ const router: IRouter[] = [
     key: '/formlist',
     child: [
       {
-        title: '编辑',
+        title: '可编辑表单',
         icon: '',
         key: '/editorForm',
         path: '/editorForm'
       },
       {
-        title:'详情',
+        title: '详情',
         icon: '',
         key: '/detailForm',
         path: '/detailForm'
+      },
+      {
+        title: '可搜索表单',
+        icon: '',
+        key: '/searchForm',
+        path: '/searchForm'
       }
     ]
   },

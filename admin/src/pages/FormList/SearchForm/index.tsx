@@ -1,23 +1,31 @@
-import React, { FC, useRef, useState } from 'react';
-import { formList } from '@/model/userList';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { formList } from '@/model/searchList';
 import { IInputItem } from '@/types/form';
 import CommForm from '@/components/CommForm';
-import moment from 'moment';
 import { getFormValue } from '@/utils/public';
+import { UpOutlined, DownOutlined } from '@ant-design/icons'
 import './index.scss'
-import { Button, message } from 'antd';
+import { Button, message, Row, Col } from 'antd';
 
 interface IObject {
   [propName: string]: any
 }
-const EditorFormList: FC = () => {
+const SearchFormList: FC = () => {
   const formRef = useRef<HTMLFormElement>(null)
   const [list, setList] = useState([...formList])
   const formValue = getFormValue(list)
+  const [expand, setExpand] = useState(false)
   const [params, setParams] = useState({
     ...formValue
   })
 
+  useEffect(() => {
+    if (expand) {
+      setList([...formList])
+    } else {
+      setList([...formList.filter((item, index) => index < 3)])
+    }
+  }, [expand])
   // 表单赋值后的回调
   const back = (values: IObject) => {
     setParams(Object.assign(params, values))
@@ -34,10 +42,6 @@ const EditorFormList: FC = () => {
     console.log('表单数据集合', JSON.stringify(values))
   }
 
-  const iconMethods = (values: any) => {
-    // setVisible(true)
-    console.log(values)
-  }
 
   // 提交
   const submit = () => {
@@ -56,12 +60,30 @@ const EditorFormList: FC = () => {
         formValues={params}
         formRef={formRef}
         callback={(values: IObject) => back(values)}
-        isSuccess={(values: IObject) => isSuccess(values)}
-        iconMethods={(values: any) => iconMethods(values)}></CommForm>
-      <Button type="primary" onClick={submit} >提 交</Button>
-      <Button type="primary" onClick={reset} >重 置</Button>
+        isSuccess={(values: IObject) => isSuccess(values)}></CommForm>
+      <Row>
+        <Col span={24} style={{ textAlign: 'right' }}>
+          <Button type="primary" onClick={submit}>
+            Search
+          </Button>
+          <Button
+            style={{ margin: '0 8px' }}
+            onClick={reset}
+          >
+            Clear
+          </Button>
+          <a
+            style={{ fontSize: 12 }}
+            onClick={() => {
+              setExpand(!expand);
+            }}
+          >
+            {expand ? <UpOutlined /> : <DownOutlined />} Collapse
+          </a>
+        </Col>
+      </Row>
     </div>
   )
 }
 
-export default EditorFormList
+export default SearchFormList

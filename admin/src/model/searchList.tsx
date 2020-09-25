@@ -1,35 +1,25 @@
 import { IInputItem } from '@/types/form';
-import moment from 'moment';
 export const formList: IInputItem[] = [
   {
     label: '用户名',
     name: 'username',
     type: 'input',
     value: '',
-    required: true,
     // attrs: { disabled: true }
-  },
-  {
-    label: '还款用户行',
-    name: 'bank',
-    type: 'search',
-    value: '中国银行',
-    required: true,
   },
   {
     label: '性别',
     name: 'gender',
     type: 'select',
     options: [],
-    value: 'Jack',
-    required: true,
+    value: '',
     // attrs: { disabled: true }
   },
   {
     label: '出生日期',
     name: 'birth',
     type: 'date',
-    value: moment(new Date()),
+    value: '',
     // attrs: { disabled: true }
   },
   {
@@ -37,27 +27,27 @@ export const formList: IInputItem[] = [
     name: 'repayDate',
     type: 'rangeDate',
     value: '',
-    attrs: { disabled: true }
+    attrs: ''
   },
   {
     label: '还款时间',
     name: 'repayTime',
     type: 'time',
     value: '',
-    attrs: { disabled: true }
+    attrs: ''
   },
   {
     label: '还款时间范围',
     name: 'repayTimeRange',
     type: 'rangeTime',
     value: '',
-    attrs: { disabled: true }
+    attrs: ''
   },
   {
     label: '描述',
     name: 'descriptions',
     type: 'textarea',
     value: '',
-    attrs: { disabled: true }
+    attrs: ''
   },
 ]

@@ -1,3 +1,4 @@
+// 路由配置工程化
 export const routeComponent = () => {
   const files = require.context('../pages/', true, /\.tsx$/)
   const components = []
