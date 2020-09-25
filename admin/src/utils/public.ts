@@ -3,7 +3,7 @@ import moment from 'moment';
 const dateFormate = 'YYYY/MM/DD'
 // 动态表单
 export const computedFormList = (list: IInputItem[], filterArr: string[]) => {
-  return list.filter(({ name }) => filterArr.includes(name))
+  return list.filter(({ name }) => !filterArr.includes(name))
 }
 
 // formList中的value值的映射

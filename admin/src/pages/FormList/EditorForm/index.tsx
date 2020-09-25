@@ -3,7 +3,7 @@ import { formList } from '@/model/userList';
 import { IInputItem } from '@/types/form';
 import CommForm from '@/components/CommForm';
 import moment from 'moment';
-import { getFormValue } from '@/utils/public';
+import { getFormValue, computedFormList } from '@/utils/public';
 import './index.scss'
 import { Button, message } from 'antd';
 
@@ -20,8 +20,13 @@ const EditorFormList: FC = () => {
 
   // 表单赋值后的回调
   const back = (values: IObject) => {
-    setParams(Object.assign(params, values))
-    console.log(params)
+    // setParams(Object.assign(params, values))
+    setParams({ ...params, ...values })
+    // 字段过滤(联动)
+    if (values.gender && formValue.gender === 'Tom') {
+      setList([...computedFormList(list, ['username'])])
+    }
+    console.log(values.username)
   }
   const isSuccess = (values: IObject) => {
     // setBody(values)
