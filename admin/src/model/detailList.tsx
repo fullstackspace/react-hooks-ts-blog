@@ -1,6 +1,7 @@
 import { IInputItem } from '@/types/form';
+import { IColumn } from '@/types/table';
 import moment from 'moment';
-export const formList: IInputItem[] = [
+const formList: IInputItem[] = [
   {
     label: '用户名',
     name: 'username',
@@ -54,3 +55,37 @@ export const formList: IInputItem[] = [
     value: '恶魔妈妈木木木木',
   },
 ]
+
+const tableList: IColumn[] = [
+  {
+    title: 'Name',
+    dataIndex: 'Name',
+    key: 'name',
+    editable: true
+  },
+  {
+    title: 'Age',
+    dataIndex: 'Age',
+    key: 'age',
+    editable: true
+  },
+  {
+    title: 'Address',
+    dataIndex: 'Address',
+    key: 'address',
+    editable: true
+  },
+  {
+    title: 'Tags',
+    key: 'Tags',
+    dataIndex: 'tags',
+    editable: true
+  },
+]
+
+export default (options?: string) => {
+  return {
+    formList,
+    tableList
+  }
+}

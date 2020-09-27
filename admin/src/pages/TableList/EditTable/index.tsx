@@ -8,6 +8,7 @@ interface Item {
   address: string;
 }
 
+// 循环生成数据
 const originData: Item[] = [];
 for (let i = 0; i < 100; i++) {
   originData.push({
@@ -39,7 +40,7 @@ const EditableCell: React.FC<EditableCellProps> = ({
   ...restProps
 }) => {
   const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
-  console.log(editing,'-',dataIndex,'-',title)
+  console.log(editing, '-', dataIndex, '-', title)
   return (
     <td {...restProps}>
       {editing ? (
@@ -105,6 +106,7 @@ const EditableTable = () => {
       console.log('Validate Failed:', errInfo);
     }
   };
+
   const columns = [
     {
       title: 'name',
@@ -147,6 +149,7 @@ const EditableTable = () => {
       },
     },
   ];
+
   const mergedColumns = columns.map(col => {
     if (!col.editable) {
       return col;
@@ -162,6 +165,7 @@ const EditableTable = () => {
       }),
     };
   });
+  console.log(editingKey)
   return (
     <Form form={form} component={false}>
       <Table

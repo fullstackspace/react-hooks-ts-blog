@@ -82,6 +82,18 @@ const router: IRouter[] = [
         path: '/generalTable'
       },
       {
+        title: '可编辑表格(无接口)',
+        icon: '',
+        key: '/operationTable',
+        path: '/operationTable'
+      },
+      {
+        title: '可编辑表格(调接口)',
+        icon: '',
+        key: '/requestTable',
+        path: '/requestTable'
+      },
+      {
         title: '可编辑表格',
         icon: '',
         key: '/editTable',

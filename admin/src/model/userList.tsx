@@ -1,6 +1,10 @@
 import { IInputItem } from '@/types/form';
+import { IColumn } from '@/types/table';
+
+import { Tag } from 'antd';
 import moment from 'moment';
-export const formList: IInputItem[] = [
+import React from 'react';
+const formList: IInputItem[] = [
   {
     label: '用户名',
     name: 'username',
@@ -61,3 +65,49 @@ export const formList: IInputItem[] = [
     attrs: { disabled: true }
   },
 ]
+
+const tableList: IColumn[] = [
+  {
+    title: 'Name',
+    dataIndex: 'name',
+    key: 'name',
+    render: (text: string) => <a>{text}</a>,
+  },
+  {
+    title: 'Age',
+    dataIndex: 'age',
+    key: 'age',
+  },
+  {
+    title: 'Address',
+    dataIndex: 'address',
+    key: 'address',
+  },
+  {
+    title: 'Tags',
+    key: 'tags',
+    dataIndex: 'tags',
+    render: (tags: any) => (
+      <>
+        {tags.map((tag: string) => {
+          let color = tag.length > 5 ? 'geekblue' : 'green';
+          if (tag === 'loser') {
+            color = 'volcano';
+          }
+          return (
+            <Tag color={color} key={tag}>
+              {tag.toUpperCase()}
+            </Tag>
+          );
+        })}
+      </>
+    ),
+  },
+]
+
+export default (options?: string) => {
+  return {
+    formList,
+    tableList
+  }
+}

@@ -1,6 +1,6 @@
 import React, { FC, useRef, useState } from 'react';
 import CommForm from '@/components/CommForm';
-import { formList } from '@/model/detailList';
+import detailList from '@/model/detailList';
 import { getFormValue } from '@/utils/public';
 import { Button, message } from 'antd';
 import './index.scss'
@@ -8,6 +8,8 @@ import './index.scss'
 interface IObject {
   [propName: string]: any
 }
+
+const { formList } = detailList()
 
 const DetailForm: FC = () => {
   const formRef = useRef<HTMLFormElement>(null)

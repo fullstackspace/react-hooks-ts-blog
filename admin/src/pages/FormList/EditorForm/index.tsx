@@ -1,5 +1,5 @@
 import React, { FC, useRef, useState } from 'react';
-import { formList } from '@/model/userList';
+import userList from '@/model/userList';
 import { IInputItem } from '@/types/form';
 import CommForm from '@/components/CommForm';
 import moment from 'moment';
@@ -10,6 +10,8 @@ import { Button, message } from 'antd';
 interface IObject {
   [propName: string]: any
 }
+
+const { formList } = userList()
 const EditorFormList: FC = () => {
   const formRef = useRef<HTMLFormElement>(null)
   const [list, setList] = useState([...formList])
