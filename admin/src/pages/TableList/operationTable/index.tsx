@@ -52,6 +52,7 @@ const { tableList } = detailList()
 const OperationTable: FC = (props) => {
   const [data, setData] = useState([...dataList])
   const [count, setCount] = useState(String(data.length + 1))
+  const [isAdd, setIsAdd] = useState(true)
   const formRef = useRef<HTMLFormElement>(null)
   const [editingKey, setEditingKey] = useState('');
   const isEditing = (record: Item) => record.key === editingKey;
@@ -93,7 +94,13 @@ const OperationTable: FC = (props) => {
 
     if (name === 'cancelButton') {
       console.log(record)
+      if (!isAdd) {
+        const newData = data.filter(item => record.key !== item.key)
+        setData(newData)
+      }
       setEditingKey('')
+      setIsAdd(true)
+      setCount(String(Number(count) - 1))
     }
     if (name === 'deleteButton') {
       formRef.current?.del(record.key)
@@ -108,6 +115,7 @@ const OperationTable: FC = (props) => {
     setData(data)
     setEditingKey('')
     message.success('修改成功!')
+    setIsAdd(true)
   }
   // 数据删除(前端)
   const deleteDate = (data: []) => {
@@ -116,24 +124,27 @@ const OperationTable: FC = (props) => {
   }
 
   const handleAdd = () => {
-    // const addCount = count
-    // setEditingKey(addCount)
-    // const newData = {
-    //   key: addCount,
-    //   Name: '',
-    //   Age: 0,
-    //   Address: '',
-    //   Tags: '',
-    // };
-    // setCount(count + 1)
-    // setData([newData, ...data])
+    formRef.current?.resetForm()
+    setIsAdd(false)
+    const addCount = count
+    setEditingKey(addCount)
+    const newData = {
+      key: addCount,
+      Name: '',
+      Age: 0,
+      Address: '',
+      Tags: '',
+    };
+    setCount(String(Number(count) + 1))
+    console.log(newData)
+    setData([newData, ...data])
     console.log(data)
   }
 
   // console.log(editingKey)
   return (
     <div className='table-container'>
-      <Button type="primary" onClick={handleAdd}>新增</Button>
+      <Button type="primary" disabled={!isAdd} onClick={handleAdd}>新增</Button>
       <CommTable
         editingKey={editingKey}
         formRef={formRef}

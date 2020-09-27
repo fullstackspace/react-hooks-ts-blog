@@ -65,6 +65,8 @@ const EditableCell: React.FC<EditableCellProps> = ({
 
 const EditableTable = () => {
   const [form] = Form.useForm();
+  const [count, setCount] = useState('1000')
+  const [isAdd, setIsAdd] = useState(true)
   const [data, setData] = useState(originData);
   const [editingKey, setEditingKey] = useState('');  // 控制修改的是那一行数据
 
@@ -97,6 +99,7 @@ const EditableTable = () => {
         });
         setData(newData);
         setEditingKey('');
+        setIsAdd(true)
       } else {
         newData.push(row);
         setData(newData);
@@ -166,24 +169,43 @@ const EditableTable = () => {
     };
   });
   console.log(editingKey)
-  return (
-    <Form form={form} component={false}>
-      <Table
 
-        components={{
-          body: {
-            cell: EditableCell,
-          },
-        }}
-        bordered
-        dataSource={data}
-        columns={mergedColumns}
-        rowClassName="editable-row"
-        pagination={{
-          onChange: cancel,
-        }}
-      />
-    </Form>
+  const handleAdd = () => {
+    form.resetFields()
+    setIsAdd(false)
+    const addCount = count
+    const newData = [{
+      key: addCount,
+      name: '',
+      age: 0,
+      address: '',
+    }];
+    console.log(newData)
+    setCount(String(Number(count) + 1))
+    setData([...newData, ...data])
+    setEditingKey(addCount)
+    console.log(data)
+  }
+  return (
+    <div>
+      <Button type="primary" disabled={!isAdd} onClick={handleAdd}>Add</Button>
+      <Form form={form} component={false}>
+        <Table
+          components={{
+            body: {
+              cell: EditableCell,
+            },
+          }}
+          bordered
+          dataSource={data}
+          columns={mergedColumns}
+          rowClassName="editable-row"
+          pagination={{
+            onChange: cancel,
+          }}
+        />
+      </Form>
+    </div>
   );
 };
 export default EditableTable 

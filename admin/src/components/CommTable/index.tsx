@@ -113,11 +113,16 @@ const CommTable: FC<IProps> = (props) => {
   const cancel = () => {
     // setEditingKey('');
   };
+
+  const resetForm = () => {
+    form.resetFields()
+  }
   useImperativeHandle(formRef, () => ({
     save,
     cancel,
     del,
-    edit
+    edit,
+    resetForm
   }))
 
   const mergedColumns = columns.map(col => {
