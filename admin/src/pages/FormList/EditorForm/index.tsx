@@ -25,20 +25,12 @@ const EditorFormList: FC = () => {
     // setParams(Object.assign(params, values))
     setParams({ ...params, ...values })
     // 字段过滤(联动)
-    if (values.gender && formValue.gender === 'Tom') {
+    if (values.gender && values.gender === 'tom') {
       setList([...computedFormList(list, ['username'])])
+    } else {
+      setList([...formList])
     }
     console.log(values.username)
-  }
-  const isSuccess = (values: IObject) => {
-    // setBody(values)
-    const { isOk = true } = values
-    if (!isOk) {
-      message.warn('当前页面存在必填项未录入或数据录入错误,请检查!')
-    } else {
-      formRef.current?.reset()
-    }
-    console.log('表单数据集合', JSON.stringify(values))
   }
 
   const iconMethods = (values: any) => {
@@ -49,12 +41,19 @@ const EditorFormList: FC = () => {
   // 提交
   const submit = () => {
     // ?.可选链操作符
-    formRef.current?.submit()
+    const { validateFields } = formRef.current?.form
+    validateFields()
+      .then((val: any) => {
+        console.log(val)
+      }).catch((err: any) => {
+        console.log(err)
+      })
   }
 
   // 重置
   const reset = () => {
-    formRef.current?.reset()
+    setParams({})
+    formRef.current?.form.resetFields()
   }
   return (
     <div className="form-container">
@@ -63,7 +62,6 @@ const EditorFormList: FC = () => {
         formValues={params}
         formRef={formRef}
         callback={(values: IObject) => back(values)}
-        isSuccess={(values: IObject) => isSuccess(values)}
         iconMethods={(values: any) => iconMethods(values)}></CommForm>
       <Button type="primary" onClick={submit} >提 交</Button>
       <Button type="primary" onClick={reset} >重 置</Button>

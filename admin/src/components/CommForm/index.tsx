@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useImperativeHandle } from 'react';
 import { IInputItem } from '@/types/form';
 import { Form, Input, Select, DatePicker, TimePicker, Button } from 'antd';
+import moment from 'moment';
 import { useForm } from 'antd/lib/form/Form';
 import './index.scss'
 
@@ -12,7 +13,6 @@ interface IProps {
   formValues?: object | any,
   iconMethods?: (values: IObject) => void,
   callback?: (values: IObject) => void,
-  isSuccess?: (values: IObject) => void,
   [propName: string]: any
 }
 interface IObject {
@@ -21,7 +21,7 @@ interface IObject {
 
 
 const CommForm: FC<IProps> = (props) => {
-  const { isEdit, list, formValues, iconMethods, callback, formRef, isSuccess } = props
+  const { isEdit, list, formValues, iconMethods, callback, formRef } = props
   const [form] = useForm()
   form.setFieldsValue({ ...formValues })
 
@@ -37,30 +37,8 @@ const CommForm: FC<IProps> = (props) => {
     }
   }, [isEdit])
 
-  const submit = () => {
-    const { validateFields } = form
-    validateFields()
-      .then(values => {
-        console.log(values, 'values')
-        // 变量后 '!' 非空断言符
-        isSuccesss!(values)
-      })
-      .catch(err => {
-        console.log(err, 'err')
-        isSuccesss!({ isOk: false })
-      })
-    console.log(form)
-  }
-  const reset = () => {
-    form.resetFields()
-  }
-  const isSuccesss = (val: any) => {
-    console.log(val)
-    isSuccess!(val)
-  }
   useImperativeHandle(formRef, () => ({
-    submit,
-    reset
+    form
   }))
 
   const updateValue = (e: any, name: string, value?: any) => {
@@ -103,7 +81,7 @@ const CommForm: FC<IProps> = (props) => {
         return iconMethods!({ name, value })
       } else if (e === 'date') {
         valObject = {
-          [value]: name,
+          [value]: name ? moment(name) : '',
         }
       } else {
         valObject = {
@@ -112,6 +90,7 @@ const CommForm: FC<IProps> = (props) => {
         // valObject.value = e.target.value
         // valObject.value = name
       }
+      console.log('valObject', valObject)
       return callback!(valObject)
     }
     switch (type) {

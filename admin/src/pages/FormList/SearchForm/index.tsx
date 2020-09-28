@@ -31,28 +31,19 @@ const SearchFormList: FC = () => {
     setParams(Object.assign(params, values))
     console.log(params)
   }
-  const isSuccess = (values: IObject) => {
-    // setBody(values)
-    const { isOk = true } = values
-    if (!isOk) {
-      message.warn('当前页面存在必填项未录入或数据录入错误,请检查!')
-    } else {
-      formRef.current?.reset()
-    }
-    console.log('表单数据集合', JSON.stringify(values))
-  }
+
 
 
   // 提交
   const submit = () => {
     // ?.可选链操作符
-    const res = formRef.current?.submit()
+    const res = formRef.current?.form.getFieldsValue()
     console.log('res', res)
   }
 
   // 重置
   const reset = () => {
-    formRef.current?.reset()
+    formRef.current?.form.resetFields()
   }
   return (
     <div className="form-container">
@@ -60,8 +51,7 @@ const SearchFormList: FC = () => {
         list={list}
         formValues={params}
         formRef={formRef}
-        callback={(values: IObject) => back(values)}
-        isSuccess={(values: IObject) => isSuccess(values)}></CommForm>
+        callback={(values: IObject) => back(values)}></CommForm>
       <Row>
         <Col span={24} style={{ textAlign: 'right' }}>
           <Button type="primary" onClick={submit}>
@@ -73,7 +63,14 @@ const SearchFormList: FC = () => {
           >
             Clear
           </Button>
-
+          <a
+            style={{ fontSize: 12 }}
+            onClick={() => {
+              setExpand(!expand);
+            }}
+          >
+            {expand ? <UpOutlined /> : <DownOutlined />} Collapse
+          </a>
         </Col>
       </Row>
     </div>

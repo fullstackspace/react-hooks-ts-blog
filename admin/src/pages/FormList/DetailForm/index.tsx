@@ -31,7 +31,8 @@ const DetailForm: FC = () => {
   }
 
   const submit = () => {
-    formRef.current?.submit()
+    const res = formRef.current?.form.getFieldsValue()
+    console.log(res)
   }
 
   return (
