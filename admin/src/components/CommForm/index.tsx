@@ -43,18 +43,21 @@ const CommForm: FC<IProps> = (props) => {
       .then(values => {
         console.log(values, 'values')
         // 变量后 '!' 非空断言符
-        isSuccess!(values)
+        isSuccesss!(values)
       })
       .catch(err => {
         console.log(err, 'err')
-        isSuccess!({ isOk: false })
+        isSuccesss!({ isOk: false })
       })
     console.log(form)
   }
   const reset = () => {
     form.resetFields()
   }
-
+  const isSuccesss = (val: any) => {
+    console.log(val)
+    isSuccess!(val)
+  }
   useImperativeHandle(formRef, () => ({
     submit,
     reset

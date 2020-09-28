@@ -124,6 +124,7 @@ const OperationTable: FC = (props) => {
   }
 
   const handleAdd = () => {
+    // 清空表单,否则新增行的数据会去到上一次新增的数据
     formRef.current?.resetForm()
     setIsAdd(false)
     const addCount = count

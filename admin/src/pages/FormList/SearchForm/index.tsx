@@ -46,7 +46,8 @@ const SearchFormList: FC = () => {
   // 提交
   const submit = () => {
     // ?.可选链操作符
-    formRef.current?.submit()
+    const res = formRef.current?.submit()
+    console.log('res', res)
   }
 
   // 重置
@@ -72,14 +73,7 @@ const SearchFormList: FC = () => {
           >
             Clear
           </Button>
-          <a
-            style={{ fontSize: 12 }}
-            onClick={() => {
-              setExpand(!expand);
-            }}
-          >
-            {expand ? <UpOutlined /> : <DownOutlined />} Collapse
-          </a>
+
         </Col>
       </Row>
     </div>

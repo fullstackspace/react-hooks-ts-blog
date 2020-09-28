@@ -67,7 +67,13 @@ const router: IRouter[] = [
         icon: '',
         key: '/searchForm',
         path: '/searchForm'
-      }
+      },
+      {
+        title: '测试表单',
+        icon: '',
+        key: '/testForm',
+        path: '/testForm'
+      },
     ]
   },
   {
