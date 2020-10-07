@@ -1,0 +1,39 @@
+.blog-container {
+  & .left {
+    & .blog {
+      display: flex;
+      justify-content: space-between;
+      & .ant-row {
+        width: 45%;
+      }
+      &.article-content {
+        & textarea {
+          height: calc(100vh - 300px);
+          resize: none;
+        }
+      }
+    }
+  }
+  & .right {
+    position: relative;
+    & .ant-input-number {
+      width: 100%;
+    }
+    & .ant-picker {
+      width: 100%;
+    }
+    & .action {
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      & .ant-btn {
+        width: 120px;
+        height: 32px;
+        &:first-child {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

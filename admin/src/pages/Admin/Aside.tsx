@@ -2,7 +2,7 @@ import React, { useState, useEffect, FC } from 'react';
 import { Layout, Menu } from 'antd';
 import { AntDesignOutlined } from '@ant-design/icons';
 import router, { IRouter } from '@/router';
-import createIcon from '../../components/createIcon';
+import createIcon from '@/components/CreateIcon/index';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { routeComponent } from '@/utils/commom';
 const { Sider } = Layout

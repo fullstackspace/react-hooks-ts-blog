@@ -6,7 +6,7 @@ import {
   SoundOutlined,
   UserOutlined
 } from '@ant-design/icons';
-import createIcon from '@/components/createIcon';
+import createIcon from '@/components/CreateIcon/index';
 
 const { Header } = Layout;
 interface IProps {

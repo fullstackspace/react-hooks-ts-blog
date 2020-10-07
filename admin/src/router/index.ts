@@ -14,6 +14,25 @@ const router: IRouter[] = [
     key: '/firstPages',
   },
   {
+    title: '博客',
+    icon: 'DatabaseOutlined',
+    key: '/blogabout',
+    child: [
+      {
+        title: '可编辑blog',
+        key: '/blogedit',
+        path: '/blogedit',
+        icon: ''
+      },
+      {
+        title: '文章列表',
+        key: '/bloglist',
+        path: '/bloglist',
+        icon: ''
+      },
+    ]
+  },
+  {
     title: 'Dashboard',
     icon: 'GitlabOutlined',
     key: '/dashboard',
