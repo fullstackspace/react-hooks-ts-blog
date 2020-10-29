@@ -1,4 +1,10 @@
-const { override, addWebpackAlias, adjustStyleLoaders, fixBabelImports } = require('customize-cra')
+const {
+  override,
+  addWebpackAlias,
+  adjustStyleLoaders,
+  fixBabelImports,
+  addLessLoader,
+} = require('customize-cra')
 const path = require('path')
 
 module.exports = override(
@@ -11,6 +17,7 @@ module.exports = override(
   addWebpackAlias({
     '@': path.resolve(__dirname, 'src'),
   }),
+  // scss语法支持
   adjustStyleLoaders((rule) => {
     if (rule.test.toString().includes('scss')) {
       rule.use.push({
@@ -20,5 +27,11 @@ module.exports = override(
         },
       })
     }
+  }),
+  // less语法支持
+  addLessLoader({
+    javascriptEnabled: true,
+    ModifyVars: { '@primary-color': '#1DA57A' },
+    sourceMap: true,
   })
 )
