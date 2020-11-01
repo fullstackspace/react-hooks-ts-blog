@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './index.scss'
+import './index.less'
 
 class Personal extends Component {
   constructor(prop: any) {
