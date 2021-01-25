@@ -1,0 +1,34 @@
+.tiger-progress {
+  &-outer {
+    width: 100%;
+    display: inline-block;
+    margin-top: 30px;
+    margin-right: 0;
+    padding-right: 0;
+  }
+  &-inner {
+    vertical-align: middle;
+    display: inline-block;
+    background: #eeeeee;
+    border-radius: 100px;
+    position: relative;
+    width: 100%;
+  }
+  //预留 &-bg 背景颜色代表进度条的长度，灰色的 inner 背景
+  &-line {
+    width: 100%;
+    font-size: inherit;
+    position: relative;
+  }
+  &-text {
+    word-break: normal;
+    width: 2em;
+    text-align: left;
+    font-size: 1em;
+    margin-left: 8px;
+    vertical-align: middle;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1;
+  }
+}

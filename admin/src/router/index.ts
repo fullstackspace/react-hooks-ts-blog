@@ -1,3 +1,5 @@
+import { title } from "process"
+
 export interface IRouter {
   title: string,
   key: string, // key值如果是菜单统一使用小写(使用驼峰需定义方法,将点击菜单的key转换成驼峰形式),如果是路由则大小写无限制,
@@ -30,6 +32,20 @@ const router: IRouter[] = [
         path: '/bloglist',
         icon: ''
       },
+    ]
+  },
+  {
+    title: '业务组件',
+    icon: 'RadiusSettingOutlined',
+    key: '/businesscomponent',
+    child: [
+      {
+        title: 'scroll滑块',
+        icon: '',
+        key:'/scrollTab',
+        path:'/scrollTab',
+      }
+
     ]
   },
   {
@@ -143,7 +159,20 @@ const router: IRouter[] = [
     icon: 'UserOutlined',
     key: '/personal',
     path: '/personal'
-  }
+  },
+  {
+    title: '测试',
+    icon: 'DragOutlined',
+    key: '/testpage',
+    child: [
+      {
+        title: '进度条',
+        icon: '',
+        key: '/progressBar',
+        path: '/progressBar'
+      },
+    ]
+  },
 ]
 
 export default router
