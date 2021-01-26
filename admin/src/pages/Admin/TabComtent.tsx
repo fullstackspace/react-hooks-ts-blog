@@ -3,27 +3,32 @@ import { Layout } from 'antd';
 import PrivateRouter from '@/components/privateRouter';
 // 工程化
 import { routeComponent } from '@/utils/commom';
+import RouteTag from './RouteTag';
+import { ITagProps } from './index';
 
 const { Content } = Layout
 interface IProps {
   collapsed: boolean,
+  tagArray: Array<ITagProps>,
   [propsName: string]: any
 }
 // console.log(routeComponent())
 const TabComtent = (props: IProps) => {
   const [components, setComponents] = useState([])
-  const { collapsed } = props
+  const { collapsed, tagArray, deleteTag } = props
   useEffect(() => {
-    // console.log(1)
     setComponents(routeComponent() as [])
   }, [])
   return (
     <Content className={collapsed ? 'close' : 'open'}>
-      {
-        components.map(({ path, component }) => (
-          <PrivateRouter key={path} component={component} path={path}></PrivateRouter>
-        ))
-      }
+      <RouteTag tagArray={tagArray} deleteTag={deleteTag} />
+      <div className="content-card">
+        {
+          components.map(({ path, component }) => (
+            <PrivateRouter key={path} component={component} path={path}></PrivateRouter>
+          ))
+        }
+      </div>
     </Content>
   )
 }

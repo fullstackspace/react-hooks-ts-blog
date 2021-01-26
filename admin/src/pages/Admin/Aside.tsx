@@ -44,7 +44,7 @@ const Aside: FC<IProps> = (props) => {
   const history = useHistory()
   // const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/workLog'], menuOpen: ['/dashboard','/work'] })
   // const [menuKey, setMenuKey] = useState<IMenu>({ selectKeys: ['/generalTable'], menuOpen: ['/tablelist'] })
-  const { collapsed } = props
+  const { collapsed, tagFunc } = props
   const local = useLocation()
   const route = routeComponent()
   /**路由切换时,控制左侧菜单高亮或多级菜单展开收起 */
@@ -58,9 +58,9 @@ const Aside: FC<IProps> = (props) => {
     const pathIndex = route.findIndex(({ path }) => pathname.toLowerCase() === path)
     // let parentPath = menuKey.menuOpen
     let parentPath = ['']
-    console.log(pathIndex)
+    // console.log(pathIndex)
     if (pathIndex > -1) {
-      console.log(route[pathIndex])
+      // console.log(route[pathIndex])
       parentPath = [...route[pathIndex].parentPath]
     }
     // 初始化时直接跳转到首页
@@ -69,11 +69,13 @@ const Aside: FC<IProps> = (props) => {
     }
     setMenuKey({ selectKeys: [pathname], menuOpen: parentPath })
   }, [local, collapsed, history])
-
   /**选中菜单 */
   const selectMenu = (item: any) => {
     console.log(item)
     setMenuKey({ ...menuKey, selectKeys: [item.key] })
+    console.log(item.domEvent.target.innerText, menuKey)
+    tagFunc({ ...menuKey, title: item.domEvent.target.innerText })
+    tagFunc({ menuOpen: menuKey.menuOpen, selectKeys: item.selectedKeys, title: item.domEvent.target.innerText })
   }
 
   /**点击一级以上菜单标题 */

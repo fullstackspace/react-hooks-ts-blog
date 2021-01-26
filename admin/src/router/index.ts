@@ -1,5 +1,3 @@
-import { title } from "process"
-
 export interface IRouter {
   title: string,
   key: string, // key值如果是菜单统一使用小写(使用驼峰需定义方法,将点击菜单的key转换成驼峰形式),如果是路由则大小写无限制,

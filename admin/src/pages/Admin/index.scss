@@ -56,6 +56,29 @@
       &.close {
         margin-left: 80px;
       }
+      & .content-card {
+        margin-top: 5px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        padding: 5px;
+        min-height: calc(100vh - 200px);
+      }
+      &.open {
+        & .tag-container {
+          display: flex;
+          & .ant-tag {
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            &.active {
+              box-shadow: 5px 6px 5px rgb(0, 21, 41);
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
     }
     // 底部
     & .ant-layout-footer {

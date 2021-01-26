@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import tabOne from './tabOne';
 import './index.scss'
 class ScrollTab extends Component {
   constructor(prop: any) {
@@ -6,7 +7,13 @@ class ScrollTab extends Component {
   }
 
   render() {
-    return <div>ScrollTab</div>
+    return (
+      <div>
+        {
+          React.createElement(tabOne)
+        }
+      </div>
+    )
   }
 }
 

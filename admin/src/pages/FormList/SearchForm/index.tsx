@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { formList } from '@/model/searchList';
-import { IInputItem } from '@/types/form';
 import CommForm from '@/components/CommForm';
 import { getFormValue } from '@/utils/public';
 import { UpOutlined, DownOutlined } from '@ant-design/icons'

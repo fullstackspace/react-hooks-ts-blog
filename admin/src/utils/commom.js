@@ -25,6 +25,6 @@ export const routeComponent = () => {
       components.push({ path, component, parentPath })
     }
   })
-  console.log(components)
+  // console.log(components)
   return components
 }
