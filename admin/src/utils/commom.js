@@ -28,3 +28,19 @@ export const routeComponent = () => {
   // console.log(components)
   return components
 }
+
+// 获取菜单对应的组件
+export const menuComponent = (menuArr) => {
+  const files = require.context('@/components/tab', true, /\.tsx$/)
+  const components = []
+  files.keys().forEach((key, index) => {
+    const confirmIndex = menuArr.findIndex(({ titleName }) => titleName === key.slice(2, -4))
+    if (confirmIndex > -1) {
+      components.push({
+        id: index,
+        component: files(key).default,
+      })
+    }
+  })
+  return components
+}

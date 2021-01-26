@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class tabOne extends Component {
+class TabThree extends Component {
   constructor(prop: any) {
     super(prop)
   }
@@ -8,10 +8,10 @@ class tabOne extends Component {
   render() {
     return (
       <div>
-        <h1>tabOne</h1>
+        <h1>TabThree</h1>
       </div>
     )
   }
 }
 
-export default tabOne
+export default TabThree

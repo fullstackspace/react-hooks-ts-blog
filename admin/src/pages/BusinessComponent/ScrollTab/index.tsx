@@ -1,20 +1,37 @@
-import React, { Component } from 'react';
-import tabOne from './tabOne';
-import './index.scss'
-class ScrollTab extends Component {
-  constructor(prop: any) {
-    super(prop)
-  }
+import React, { useEffect, useRef, useState } from 'react';
+import Scroll from './Scroll';
+import ScrollContent from './ScrollContent';
 
-  render() {
-    return (
-      <div>
-        {
-          React.createElement(tabOne)
-        }
-      </div>
-    )
-  }
+import './index.scss'
+
+export interface tabTreeObj {
+  titleName: string
 }
+
+const ScrollTab = (prop: any) => {
+  const [tabTree] = useState([
+    {
+      titleName: 'TabOne'
+    },
+    {
+      titleName: 'TabTwo'
+    },
+    {
+      titleName: 'TabThree'
+    }
+  ])
+  const contentRef = useRef(null)
+  useEffect(() => {
+    // console.log(scrollContent.current)
+    console.log(contentRef.current)
+  }, [])
+  return (
+    <div className="scrolltab-container">
+      <Scroll tabTree={tabTree} />
+      <ScrollContent tabTree={tabTree} />
+    </div>
+  )
+}
+
 
 export default ScrollTab
