@@ -40,7 +40,7 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-app-bar clipped-left="clipped" fixed app>
+    <v-app-bar :clipped-left="clipped" fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
@@ -51,6 +51,7 @@
       <!-- <v-btn icon @click.stop="fixed = !fixed">
         <v-icon>mdi-minus</v-icon>
       </v-btn> -->
+      <!-- <v-switch v-model="$vuetify.theme.dark" hide-details></v-switch> -->
       <v-spacer />
       <v-row align="center" style="max-width: 30vw">
         <v-text-field
@@ -64,8 +65,22 @@
           hide-details
         ></v-text-field>
       </v-row>
-      <v-spacer/>
-      <v-switch v-model="$vuetify.theme.dark" hide-details></v-switch>
+      <v-spacer />
+      <v-btn class="mx-2" icon fab>
+        <v-badge
+          overlap
+          :content="emailMsg"
+          style="margin-right: 15px"
+          color="red"
+        >
+          <v-icon medium color="gray"> mdi-email </v-icon>
+        </v-badge>
+      </v-btn>
+
+      <v-avatar>
+        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+      </v-avatar>
+      <span style="margin-left: 5px">Hi,{{ username }}</span>
     </v-app-bar>
 
     <v-main>
@@ -131,6 +146,8 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
+      username: 'Kewin Peng',
+      emailMsg: 6,
     }
   },
   created() {
