@@ -46,25 +46,20 @@ export default {
         {
           icon: 'thumb-up-outline',
           title: 'Hey!How is it going?',
-          color: this.randomColor(),
+          color: this.common.randomColor(),
         },
         {
           icon: 'share-circle',
           title: 'Hey!How is it going?',
-          color: this.randomColor(),
+          color: this.common.randomColor(),
         },
         {
           icon: 'heart-multiple',
           title: 'Hey!How is it going?',
-          color: this.randomColor(),
+          color: this.common.randomColor(),
         },
       ],
     }
-  },
-  methods: {
-    randomColor() {
-      return '#' + Math.random().toString(16).slice(-6)
-    },
   },
 }
 </script>

@@ -1,21 +1,3 @@
-/*
- * @Author: Pengjiantian 
- * @Date: 2021-01-28 14:24:30 
- * @Last Modified by: Pengjiantian
- * @Last Modified time: 2021-01-28 14:36:17
- */
-/*
- * @Author: Pengjiantian 
- * @Date: 2021-01-28 14:24:28 
- * @Last Modified by:   Pengjiantian 
- * @Last Modified time: 2021-01-28 14:24:28 
- */
-/*
- * @Author: Pengjiantian 
- * @Date: 2021-01-28 14:24:27 
- * @Last Modified by:   Pengjiantian 
- * @Last Modified time: 2021-01-28 14:24:27 
- */
 <template>
   <v-app dark>
     <v-navigation-drawer
@@ -42,6 +24,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <v-divider></v-divider>
         <v-subheader class="mt-4 grey--text text--darken-1"
           >TEMPLATE</v-subheader
         >
@@ -150,7 +133,16 @@
     </v-app-bar>
 
     <v-main>
-      <v-container>
+      <v-card>
+        <v-breadcrumbs :items="breadcrumbs" class="mt-8 px-4 py-2">
+          <template v-slot:item="{ item }">
+            <v-breadcrumbs-item :href="item.href" :disabled="item.disabled">
+              {{ item.text }}
+            </v-breadcrumbs-item>
+          </template>
+        </v-breadcrumbs>
+      </v-card>
+      <v-container class="px-0 px-md-1 container--fluid">
         <nuxt />
       </v-container>
     </v-main>
@@ -232,6 +224,23 @@ export default {
         { text: 'Real-Time', icon: 'mdi-clock' },
         { text: 'Audience', icon: 'mdi-account' },
         { text: 'Conversions', icon: 'mdi-flag' },
+      ],
+      breadcrumbs: [
+        {
+          text: 'App',
+          disabled: true,
+          href: '#',
+        },
+        {
+          text: 'User',
+          disabled: true,
+          href: '#',
+        },
+        {
+          text: 'Profile',
+          disabled: false,
+          href: '#',
+        },
       ],
       miniVariant: false,
       right: true,

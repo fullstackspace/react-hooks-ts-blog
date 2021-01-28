@@ -2,3 +2,38 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+$v-error-base: #ff4081;
+* {
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 600px) {
+  .profile-page .user-card .avatar-wrapper {
+    width: 135px;
+    height: 135px;
+    & .user-avatar {
+      height: 94px;
+      width: 94px;
+    }
+  }
+}
+@media (min-width: 960px) {
+  .profile-page .user-card .avatar-wrapper {
+    width: 125px;
+    height: 125px;
+    & .user-avatar {
+      height: 104px;
+      width: 104px;
+    }
+  }
+}
+@media (min-width: 1264px) {
+  .profile-page .user-card .avatar-wrapper {
+    width: 155px;
+    height: 155px;
+    & .user-avatar {
+      height: 134px;
+      width: 134px;
+    }
+  }
+}
