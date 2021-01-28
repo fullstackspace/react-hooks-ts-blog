@@ -1,3 +1,21 @@
+/*
+ * @Author: Pengjiantian 
+ * @Date: 2021-01-28 14:24:30 
+ * @Last Modified by: Pengjiantian
+ * @Last Modified time: 2021-01-28 14:36:17
+ */
+/*
+ * @Author: Pengjiantian 
+ * @Date: 2021-01-28 14:24:28 
+ * @Last Modified by:   Pengjiantian 
+ * @Last Modified time: 2021-01-28 14:24:28 
+ */
+/*
+ * @Author: Pengjiantian 
+ * @Date: 2021-01-28 14:24:27 
+ * @Last Modified by:   Pengjiantian 
+ * @Last Modified time: 2021-01-28 14:24:27 
+ */
 <template>
   <v-app dark>
     <v-navigation-drawer
@@ -6,11 +24,17 @@
       :clipped="clipped"
       fixed
       app
+      style="width: 220px"
     >
       <v-list dense>
-        <v-list-item v-for="item in items" :key="item.text" :to="item.link">
+        <v-list-item
+          v-for="item in items"
+          :key="item.text"
+          :to="item.link"
+          color="primary"
+        >
           <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
+            <v-icon>mdi-{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>
@@ -19,10 +43,24 @@
           </v-list-item-content>
         </v-list-item>
         <v-subheader class="mt-4 grey--text text--darken-1"
-          >SUBSCRIPTIONS</v-subheader
+          >TEMPLATE</v-subheader
         >
-
-        <v-list-item class="mt-4" @click="isShowLoginForm = true">
+        <v-list-item
+          v-for="tem in templateItems"
+          :key="tem.text"
+          :to="tem.link"
+          color="primary"
+        >
+          <v-list-item-action>
+            <v-icon>mdi-{{ tem.icon }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ tem.text }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <!-- <v-list-item class="mt-4" @click="isShowLoginForm = true">
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
@@ -37,7 +75,7 @@
           <v-list-item-title class="grey--text text--darken-1"
             >Manage Subscriptions</v-list-item-title
           >
-        </v-list-item>
+        </v-list-item> -->
       </v-list>
     </v-navigation-drawer>
     <v-app-bar :clipped-left="clipped" fixed app>
@@ -45,42 +83,70 @@
       <v-btn icon @click.stop="miniVariant = !miniVariant">
         <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
       </v-btn>
-      <!-- <v-btn icon @click.stop="clipped = !clipped">
-        <v-icon>mdi-application</v-icon>
-      </v-btn> -->
-      <!-- <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>mdi-minus</v-icon>
-      </v-btn> -->
-      <!-- <v-switch v-model="$vuetify.theme.dark" hide-details></v-switch> -->
       <v-spacer />
-      <v-row align="center" style="max-width: 30vw">
+      <v-row class="mx-1" style="max-width: 15vw" v-if="isShowSearch">
         <v-text-field
+          v-model="searchMessage"
           placeholder="Search..."
           single-line
           filled
           rounded
           dense
           append-icon="mdi-magnify"
+          clear-icon="mdi-close-circle"
+          clearable
           color="white"
           hide-details
+          @click:append="sendMessage"
+          @click:clear="clearMessage"
         ></v-text-field>
       </v-row>
-      <v-spacer />
-      <v-btn class="mx-2" icon fab>
-        <v-badge
-          overlap
-          :content="emailMsg"
-          style="margin-right: 15px"
-          color="red"
-        >
-          <v-icon medium color="gray"> mdi-email </v-icon>
-        </v-badge>
+      <v-btn class="mx-0" icon fab v-else @click="isShowSearch = !isShowSearch">
+        <v-icon medium color="gray"> mdi-magnify </v-icon>
       </v-btn>
+      <v-menu offset-y>
+        <template v-slot:activator="{ attrs, on }">
+          <v-btn class="mx-0" icon fab v-bind="attrs" v-on="on">
+            <v-badge overlap :content="bellMsg" color="red">
+              <v-icon medium color="gray"> mdi-bell </v-icon>
+            </v-badge>
+          </v-btn>
+        </template>
+        <bellMenu :bellMsg="bellMsg" />
+      </v-menu>
 
-      <v-avatar>
-        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-      </v-avatar>
-      <span style="margin-left: 5px">Hi,{{ username }}</span>
+      <!-- email -->
+      <v-menu offset-y rounded="lg">
+        <template v-slot:activator="{ attrs, on }">
+          <v-btn class="mx-1" icon fab v-bind="attrs" v-on="on">
+            <v-badge overlap :content="emailMsg" color="red">
+              <v-icon medium color="gray"> mdi-email </v-icon>
+            </v-badge>
+          </v-btn>
+        </template>
+        <emailMenu :emailMsg="emailMsg" />
+      </v-menu>
+
+      <v-menu offset-y rounded="lg">
+        <template v-slot:activator="{ on, attrs }">
+          <span style="margin-left: 5px">Hi,{{ username }}</span>
+          <v-avatar dark v-bind="attrs" v-on="on">
+            <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+          </v-avatar>
+        </template>
+        <v-list rounded>
+          <v-list-item-group v-model="selectedItem" color="primary">
+            <v-list-item v-for="(avatar, index) in avatarList" :key="index">
+              <v-list-item-icon>
+                <v-icon v-text="avatar.icon"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="avatar.text"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-menu>
     </v-app-bar>
 
     <v-main>
@@ -123,7 +189,13 @@
 </template>
 
 <script>
+import emailMenu from '../components/defaultComponent/emailMenu'
+import bellMenu from '../components/defaultComponent/bellMenu'
 export default {
+  components: {
+    emailMenu,
+    bellMenu,
+  },
   data() {
     return {
       clipped: true,
@@ -132,35 +204,62 @@ export default {
       isShowLoginForm: false,
       loginModel: {},
       items: [
-        { icon: 'mdi-home', text: 'Home', link: '/' },
-        { icon: 'mdi-trending-up', text: 'Hot Coursers', link: '/courses' },
+        { icon: 'account-circle', text: 'Profile', link: '/' },
+        { icon: 'home', text: 'Dashboard', link: '/dashboard' },
+        { icon: 'cart', text: 'E-commerce', link: '/eCommerce' },
+        { icon: 'stamper', text: 'User', link: '/user' },
         {
-          icon: 'mdi-youtube-subscription',
-          text: 'Hot Comment',
-          link: '/comments',
+          icon: 'script-text-outline',
+          text: 'Documentation',
+          link: '/documentation',
         },
-        // { icon: 'mdi-history', text: 'History' },
-        // { icon: 'mdi-playlist-play', text: 'Playlists' },
-        // { icon: 'mdi-clock', text: 'Watch Later' },
+      ],
+      templateItems: [
+        { icon: 'checkerboard', text: 'Core', link: '/core' },
+        { icon: 'table', text: 'Tables', link: '/tables' },
+        {
+          icon: 'checkbox-multiple-blank-outline',
+          text: 'UI Elements',
+          link: '/uiElements',
+        },
+        { icon: 'clipboard-text-outline', text: 'Forms', link: '/forms' },
+        { icon: 'chart-bar', text: 'Charts', link: '/charts' },
+        { icon: 'map', text: 'Maps', link: '/maps' },
+        { icon: 'hexagram', text: 'Extra', link: '/extra' },
+        { icon: 'folder', text: 'Menu Levels', link: '/menuLevels' },
+      ],
+      avatarList: [
+        { text: 'Real-Time', icon: 'mdi-clock' },
+        { text: 'Audience', icon: 'mdi-account' },
+        { text: 'Conversions', icon: 'mdi-flag' },
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
       username: 'Kewin Peng',
       emailMsg: 6,
+      bellMsg: 4,
+      selectedItem: '',
+      isShowSearch: false,
+      searchMessage: '',
     }
   },
   created() {
-    this.$vuetify.theme.dark = false
+    this.$vuetify.theme.dark = true
   },
   methods: {
     async login() {
-      // this.$http.post('login', this.loginModel)
       await this.$auth.loginWith('local', {
         data: this.loginModel,
       })
-      // console.log(this.loginModel)
       this.isShowLoginForm = false
+    },
+    clearMessage() {
+      this.searchMessage = ''
+    },
+    sendMessage() {
+      this.clearMessage()
+      this.isShowSearch = false
     },
   },
 }
