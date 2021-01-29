@@ -22,8 +22,15 @@
               <folderInfo></folderInfo>
             </div>
             <div class="row">
-              <tableTaskInfo />
-              <pickerInfo />
+              <div class="col-md-7 col-12">
+                <tableTaskInfo />
+              </div>
+              <div class="col-md-5 col-12" style="padding-top: 18px">
+                <div class="row no-gutters">
+                  <pickerInfo />
+                  <viewInfo />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -40,6 +47,7 @@ import startInfo from '../components/profileComponent/startInfo'
 import projectInfo from '../components/profileComponent/projectInfo'
 import tableTaskInfo from '../components/profileComponent/tableTaskInfo'
 import pickerInfo from '../components/profileComponent/pickerInfo'
+import viewInfo from '../components/profileComponent/viewInfo'
 export default {
   components: {
     userInfo,
@@ -49,6 +57,7 @@ export default {
     projectInfo,
     tableTaskInfo,
     pickerInfo,
+    viewInfo,
   },
 }
 </script>
