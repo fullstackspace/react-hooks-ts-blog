@@ -23,6 +23,7 @@
             </div>
             <div class="row">
               <tableTaskInfo />
+              <pickerInfo />
             </div>
           </div>
         </div>
@@ -38,6 +39,7 @@ import folderInfo from '../components/profileComponent/folderInfo'
 import startInfo from '../components/profileComponent/startInfo'
 import projectInfo from '../components/profileComponent/projectInfo'
 import tableTaskInfo from '../components/profileComponent/tableTaskInfo'
+import pickerInfo from '../components/profileComponent/pickerInfo'
 export default {
   components: {
     userInfo,
@@ -46,10 +48,10 @@ export default {
     startInfo,
     projectInfo,
     tableTaskInfo,
+    pickerInfo,
   },
 }
 </script>
 
 <style lang="scss" scoped>
-
 </style>
