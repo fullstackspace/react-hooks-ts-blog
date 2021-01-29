@@ -4,69 +4,75 @@
       <v-card-title class="pa-5 pb-3">Files</v-card-title>
       <v-card-text class="pa-5 pt-0">
         <v-tabs v-model="tab">
+          <v-tabs-slider color="#ff4081"></v-tabs-slider>
           <v-tab v-for="fold in folderList" :key="fold.name">
             {{ fold.name }}
           </v-tab>
         </v-tabs>
+        <v-divider horizontal></v-divider>
+        <v-tabs-items v-model="tab">
+          <v-tab-item>
+            <div
+              class="row d-flex flex-nowrap overflow-x-auto pa-4 pt-5 justify-start"
+            >
+              <div v-for="img in tabOneList" :key="img.src">
+                <v-img
+                  class="folder-image mr-3"
+                  style="height: 106px; width: 141px"
+                  contain
+                  :src="img.src"
+                  responsive
+                >
+                  <p class="folder-title">{{ img.title }}</p>
+                  <p class="folder-subtitle-1 font-weight-medium">
+                    {{ img.subtitle }}
+                  </p></v-img
+                >
+              </div>
+            </div>
+          </v-tab-item>
+          <v-tab-item>
+            <div
+              class="row d-flex flex-nowrap overflow-x-auto pa-4 pt-5 justify-start"
+            >
+              <div v-for="img in tabOneList" :key="img.src">
+                <v-img
+                  class="folder-image mr-3"
+                  style="height: 106px; width: 141px"
+                  contain
+                  :src="img.src"
+                  responsive
+                >
+                  <p class="folder-title">{{ img.title }}</p>
+                  <p class="folder-subtitle-1 font-weight-medium">
+                    {{ img.subtitle }}
+                  </p></v-img
+                >
+              </div>
+            </div>
+          </v-tab-item>
+          <v-tab-item>
+            <div
+              class="row d-flex flex-nowrap overflow-x-auto pa-4 pt-5 justify-start"
+            >
+              <div v-for="img in tabOneList" :key="img.src">
+                <v-img
+                  class="folder-image mr-3"
+                  style="height: 106px; width: 141px"
+                  contain
+                  :src="img.src"
+                  responsive
+                >
+                  <p class="folder-title">{{ img.title }}</p>
+                  <p class="folder-subtitle-1 font-weight-medium">
+                    {{ img.subtitle }}
+                  </p></v-img
+                >
+              </div>
+            </div>
+          </v-tab-item>
+        </v-tabs-items>
       </v-card-text>
-      <v-divider></v-divider>
-      <v-tabs-items v-model="tab">
-        <v-tab-item>
-          <v-card flat>
-            <v-card-text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </v-card-text>
-          </v-card>
-        </v-tab-item>
-        <v-tab-item>
-          <v-card flat>
-            <v-card-title class="headline"> An awesome title </v-card-title>
-            <v-card-text>
-              <p>
-                Duis lobortis massa imperdiet quam. Donec vitae orci sed dolor
-                rutrum auctor. Vestibulum facilisis, purus nec pulvinar iaculis,
-                ligula mi congue nunc, vitae euismod ligula urna in dolor.
-                Praesent congue erat at massa.
-              </p>
-
-              <p>
-                Aenean posuere, tortor sed cursus feugiat, nunc augue blandit
-                nunc, eu sollicitudin urna dolor sagittis lacus. Pellentesque
-                egestas, neque sit amet convallis pulvinar, justo nulla eleifend
-                augue, ac auctor orci leo non est. Etiam sit amet orci eget eros
-                faucibus tincidunt. Donec sodales sagittis magna.
-              </p>
-
-              <p class="mb-0">
-                Ut leo. Suspendisse potenti. Duis vel nibh at velit scelerisque
-                suscipit. Fusce pharetra convallis urna.
-              </p>
-            </v-card-text>
-          </v-card>
-        </v-tab-item>
-        <v-tab-item>
-          <v-card flat>
-            <v-card-title class="headline"> An even better title </v-card-title>
-            <v-card-text>
-              <p>
-                Maecenas ullamcorper, dui et placerat feugiat, eros pede varius
-                nisi, condimentum viverra felis nunc et lorem. Sed hendrerit.
-                Maecenas malesuada. Vestibulum ullamcorper mauris at ligula.
-                Proin faucibus arcu quis ante.
-              </p>
-
-              <p class="mb-0">
-                Etiam vitae tortor. Curabitur ullamcorper ultricies nisi. Sed
-                magna purus, fermentum eu, tincidunt eu, varius ut, felis.
-                Aliquam lobortis. Suspendisse potenti.
-              </p>
-            </v-card-text>
-          </v-card>
-        </v-tab-item>
-      </v-tabs-items>
     </v-card>
   </div>
 </template>
@@ -88,10 +94,55 @@ export default {
           name: 'Social',
         },
       ],
+      tabOneList: [
+        {
+          src:
+            'https://templates-flatlogic.herokuapp.com/vue-material/img/folder-dark-blue.92003b7b.svg',
+          title: 'UX',
+          subtitle: '178 files',
+        },
+        {
+          src:
+            'https://templates-flatlogic.herokuapp.com/vue-material/img/folder-dark-pink.3c989f0f.svg',
+          title: 'Design',
+          subtitle: '154 files',
+        },
+        {
+          src:
+            'https://templates-flatlogic.herokuapp.com/vue-material/img/folder-dark-green.84fc2145.svg',
+          title: 'UX',
+          subtitle: '178files',
+        },
+        {
+          src:
+            'https://templates-flatlogic.herokuapp.com/vue-material/img/folder-dark-yellow.98d40968.svg',
+          title: 'IIIUstration',
+          subtitle: '68 files',
+        },
+      ],
     }
   },
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.folder-card {
+  & .v-image {
+    position: relative;
+    & p {
+      position: absolute;
+      left: 8px;
+      color: #fff;
+      font-weight: 600;
+      &.folder-title {
+        font-size: 18px;
+        bottom: 10px;
+      }
+      &.folder-subtitle-1 {
+        bottom: -10px;
+        font-size: 13px;
+      }
+    }
+  }
+}
 </style>
