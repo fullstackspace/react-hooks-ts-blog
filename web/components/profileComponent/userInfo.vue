@@ -104,20 +104,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.profile-page {
-  .avatar-wrapper {
-    // width: 125px;
-    // width: 125px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 3px dotted $v-error-base;
-  }
-  .user-card {
-    .user-name {
-      font-size: 25px;
-    }
+.avatar-wrapper {
+  // width: 125px;
+  // width: 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px dotted $v-error-base;
+}
+.user-card {
+  .user-name {
+    font-size: 25px;
   }
 }
 </style>

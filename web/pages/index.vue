@@ -8,15 +8,16 @@
       >
         <div class="row">
           <userInfo />
+          <mediaInfo />
+          <!-- <mediaInfo /> -->
+          <projectInfo />
+          <startInfo />
         </div>
       </div>
       <!-- 右 -->
       <div class="pt-0 pt-sm-3 col-sm-6 col-md-7 col-12">
         <div class="row">
-          <div
-            class="col col-12"
-            style="padding: 16px; padding-top: 50px"
-          >
+          <div class="col col-12" style="padding: 16px; padding-top: 50px">
             <div class="row">
               <folderInfo></folderInfo>
             </div>
@@ -29,11 +30,17 @@
 
 <script>
 import userInfo from '../components/profileComponent/userInfo'
+import mediaInfo from '../components/profileComponent/mediaInfo'
 import folderInfo from '../components/profileComponent/folderInfo'
+import startInfo from '../components/profileComponent/startInfo'
+import projectInfo from '../components/profileComponent/projectInfo'
 export default {
   components: {
     userInfo,
+    mediaInfo,
     folderInfo,
+    startInfo,
+    projectInfo,
   },
 }
 </script>
