@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-6 col-12" style="padding: 12px 0">
+  <div class="col-md-6 col-12" style="padding: 12px 12px 12px 0">
     <v-card class="media-card v-sheet ma-1" style="min-height: 296px">
       <v-card-title
         primary-title

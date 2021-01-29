@@ -132,7 +132,7 @@
       </v-menu>
     </v-app-bar>
 
-    <v-main>
+    <v-main style="padding-right: 30px">
       <v-card>
         <v-breadcrumbs :items="breadcrumbs" class="mt-8 px-4 py-2">
           <template v-slot:item="{ item }">

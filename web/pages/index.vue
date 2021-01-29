@@ -21,6 +21,9 @@
             <div class="row">
               <folderInfo></folderInfo>
             </div>
+            <div class="row">
+              <tableTaskInfo />
+            </div>
           </div>
         </div>
       </div>
@@ -34,6 +37,7 @@ import mediaInfo from '../components/profileComponent/mediaInfo'
 import folderInfo from '../components/profileComponent/folderInfo'
 import startInfo from '../components/profileComponent/startInfo'
 import projectInfo from '../components/profileComponent/projectInfo'
+import tableTaskInfo from '../components/profileComponent/tableTaskInfo'
 export default {
   components: {
     userInfo,
@@ -41,9 +45,11 @@ export default {
     folderInfo,
     startInfo,
     projectInfo,
+    tableTaskInfo,
   },
 }
 </script>
 
 <style lang="scss" scoped>
+
 </style>

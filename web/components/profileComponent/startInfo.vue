@@ -1,5 +1,5 @@
 <template>
-  <div class="pb-0 pb-sm-3 col col-12">
+  <div class="pb-0 pb-sm-3 col col-12" style="padding-top: 20px">
     <v-card class="article-card">
       <v-card-title primary-title class="pa-5 pb-3" style="padding: 12px">
         Top 5 react native starter kits

@@ -1,5 +1,5 @@
 <template>
-  <div class="col col-12" style="padding-top: 0">
+  <div class="col col-12" style="padding-left: 12px">
     <v-card class="folder-card ma-1" min-height="282px">
       <v-card-title class="pa-5 pb-3">Files</v-card-title>
       <v-card-text class="pa-5 pt-0">
