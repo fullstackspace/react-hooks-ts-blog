@@ -6,7 +6,7 @@
       :clipped="clipped"
       fixed
       app
-      style="width: 220px"
+      width="220"
     >
       <v-list dense>
         <v-list-item
@@ -25,9 +25,9 @@
           </v-list-item-content>
         </v-list-item>
         <v-divider></v-divider>
-        <v-subheader class="mt-4 grey--text text--darken-1"
-          >TEMPLATE</v-subheader
-        >
+        <v-subheader class="mt-4 grey--text text--darken-1">{{
+          miniVariant ? 'TEMPL' : 'TEMPLATE'
+        }}</v-subheader>
         <v-list-item
           v-for="tem in templateItems"
           :key="tem.text"
@@ -87,7 +87,7 @@
       <v-btn class="mx-0" icon fab v-else @click="isShowSearch = !isShowSearch">
         <v-icon medium color="gray"> mdi-magnify </v-icon>
       </v-btn>
-      <v-menu offset-y>
+      <v-menu offset-y transition="fab-transition">
         <template v-slot:activator="{ attrs, on }">
           <v-btn class="mx-0" icon fab v-bind="attrs" v-on="on">
             <v-badge overlap :content="bellMsg" color="red">
@@ -99,7 +99,7 @@
       </v-menu>
 
       <!-- email -->
-      <v-menu offset-y rounded="lg">
+      <v-menu offset-y rounded="lg" transition="fab-transition">
         <template v-slot:activator="{ attrs, on }">
           <v-btn class="mx-1" icon fab v-bind="attrs" v-on="on">
             <v-badge overlap :content="emailMsg" color="red">
@@ -110,7 +110,7 @@
         <emailMenu :emailMsg="emailMsg" />
       </v-menu>
 
-      <v-menu offset-y rounded="lg">
+      <v-menu offset-y rounded="lg" transition="fab-transition">
         <template v-slot:activator="{ on, attrs }">
           <span style="margin-left: 5px">Hi,{{ username }}</span>
           <v-avatar dark v-bind="attrs" v-on="on">
@@ -245,7 +245,7 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      username: 'Kewin Peng',
+      username: 'John Smith',
       emailMsg: 6,
       bellMsg: 4,
       selectedItem: '',

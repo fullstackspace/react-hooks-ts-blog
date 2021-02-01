@@ -16,7 +16,7 @@
           <v-list>
             <v-list-item v-for="(item, i) in titleList" :key="i">
               <v-list-item-title @click="changMedia(item.title)">{{
-                item.title
+                item.name
               }}</v-list-item-title>
             </v-list-item>
           </v-list>
