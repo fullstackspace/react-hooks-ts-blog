@@ -156,6 +156,9 @@ export default {
       ],
     }
   },
+  created() {
+    // console.log(this.$router.push('/dashboard'))
+  },
   methods: {
     updateValue(val, index) {
       this.$set(this.selectList, index, {

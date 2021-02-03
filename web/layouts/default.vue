@@ -145,6 +145,26 @@
       <v-container class="px-0 px-md-1 container--fluid">
         <nuxt />
       </v-container>
+      <v-footer sheet class="px-0 mt-2 transparent">
+        <div class="row no-gutters d-flex justify-space-between">
+          <div>
+            <v-btn class="primary--text transparent" :to="'#'">text</v-btn>
+            <v-btn class="primary--text transparent" :to="'#'">text</v-btn>
+            <v-btn class="primary--text transparent" :to="'#'">text</v-btn>
+          </div>
+          <div>
+            <v-btn icon class="greyTint--text">
+              <v-icon>mdi-facebook</v-icon>
+            </v-btn>
+            <v-btn icon class="greyTint--text">
+              <v-icon>mdi-github</v-icon>
+            </v-btn>
+            <v-btn icon class="greyTint--text">
+              <v-icon>mdi-twitter</v-icon>
+            </v-btn>
+          </div>
+        </div>
+      </v-footer>
     </v-main>
     <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
       <v-list>
@@ -174,9 +194,6 @@
         <v-btn color="success" type="submit">登录</v-btn>
       </v-form>
     </v-bottom-sheet>
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
   </v-app>
 </template>
 

@@ -1,5 +1,7 @@
 <template>
-  <v-card>
+  <v-card
+    :to="{ path: '/dashboard', query: { url, title, subsTitle, money, star } }"
+  >
     <v-img :src="url" height="200px">
       <v-chip v-if="chip" class="ma-2" :color="chipColor"> {{ chip }} </v-chip>
     </v-img>
@@ -11,7 +13,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
+      <v-btn icon style="width: 64px">
         {{ star }}
         <v-icon color="yellow">mdi-star</v-icon>
       </v-btn>
