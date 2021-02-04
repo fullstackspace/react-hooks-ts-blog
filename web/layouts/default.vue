@@ -110,7 +110,10 @@
         <emailMenu :emailMsg="emailMsg" />
       </v-menu>
 
-      <v-menu offset-y rounded="lg" transition="fab-transition">
+      <v-btn fab dark small v-if="isLogin" @click="toLogin">
+        <v-icon>mdi-account-circle</v-icon>
+      </v-btn>
+      <v-menu offset-y rounded="lg" transition="fab-transition" v-else>
         <template v-slot:activator="{ on, attrs }">
           <span style="margin-left: 5px">Hi,{{ username }}</span>
           <v-avatar dark v-bind="attrs" v-on="on">
@@ -119,7 +122,11 @@
         </template>
         <v-list rounded>
           <v-list-item-group v-model="selectedItem" color="primary">
-            <v-list-item v-for="(avatar, index) in avatarList" :key="index">
+            <v-list-item
+              v-for="(avatar, index) in avatarList"
+              :key="index"
+              @click="handleAvatar(index)"
+            >
               <v-list-item-icon>
                 <v-icon v-text="avatar.icon"></v-icon>
               </v-list-item-icon>
@@ -177,21 +184,21 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-bottom-sheet v-model="isShowLoginForm" inset>
+    <v-bottom-sheet v-model="isShowLoginForm" inset overlay-color="pink">
       <v-form class="pa-4" @submit.prevent="login">
         <v-text-field
           v-model="loginModel.username"
-          label="用户名"
+          label="username"
         ></v-text-field>
 
         <v-text-field
           v-model="loginModel.password"
-          label="密码"
+          label="password"
           type="password"
           autocomplete="new-password"
         ></v-text-field>
 
-        <v-btn color="success" type="submit">登录</v-btn>
+        <v-btn color="primary" type="submit">登录</v-btn>
       </v-form>
     </v-bottom-sheet>
   </v-app>
@@ -211,7 +218,11 @@ export default {
       drawer: false,
       fixed: false,
       isShowLoginForm: false,
-      loginModel: {},
+      loginModel: {
+        username: '',
+        password: '',
+      },
+      isLogin: false,
       items: [
         { icon: 'account-circle', text: 'Profile', link: '/' },
         { icon: 'home', text: 'Dashboard', link: '/dashboard' },
@@ -271,14 +282,26 @@ export default {
     }
   },
   created() {
+    // 判断token是否过期
+    // if (token) {
+
+    // }
+    this.isLogin = true
     this.$vuetify.theme.dark = true
   },
   methods: {
     async login() {
-      await this.$auth.loginWith('local', {
-        data: this.loginModel,
-      })
+      // await this.$auth.loginWith('local', {
+      //   data: this.loginModel,
+      // })
+      this.isLogin = false
       this.isShowLoginForm = false
+    },
+    handleAvatar(index) {
+      console.log(index)
+    },
+    toLogin() {
+      this.isShowLoginForm = true
     },
     clearMessage() {
       this.searchMessage = ''
