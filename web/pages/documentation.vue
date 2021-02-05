@@ -7,7 +7,7 @@
             <div
               class="d-flex justify-space-between justify-md-start col-md-6 col-12"
             >
-              <v-btn color="success" class="mr-2">
+              <v-btn color="success" class="mr-2" @click="toAddUser">
                 <v-icon left dark> mdi-plus </v-icon>
                 ADD
               </v-btn>
@@ -168,6 +168,9 @@ export default {
         ]
       }, 2000)
     },
+    toAddUser() {
+      this.$router.push('/user')
+    }
   },
 }
 </script>
